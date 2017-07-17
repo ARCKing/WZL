@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11232" systemVersion="15F34" minimumToolsVersion="Xcode 7.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="ArticleMessage" representedClassName="ArticleMessage" syncable="YES">
+        <attribute name="c_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="is_select" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="SystemMessage" representedClassName="SystemMessage" syncable="YES">
+        <attribute name="c_id" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ptime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="read" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="titlt" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="UserMessage" representedClassName="UserMessage" syncable="YES">
+        <attribute name="inconData" optional="YES" attributeType="Binary" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ArticleMessage" positionX="-63" positionY="-9" width="128" height="90"/>
+        <element name="UserMessage" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="SystemMessage" positionX="-63" positionY="9" width="128" height="105"/>
+    </elements>
+</model>
