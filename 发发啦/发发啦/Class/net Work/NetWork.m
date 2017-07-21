@@ -916,6 +916,11 @@
         NSString * type;
         NSString * img_url;
         
+        
+        
+        NSLog(@"---------->%@",responseObject);
+        
+        
         if ([code isEqualToString:@"1"]) {
             
             NSDictionary * dict = responseObject[@"data"];
