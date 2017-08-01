@@ -12,8 +12,11 @@
 #import "wkWebViewController.h"
 #import "articleModel.h"
 
+#import "MBProgressHUD.h"
+#import "NetWork.h"
 #import "webViewController.h"
-
+#import "ImportArticleCell.h"
+#import "MJRefresh.h"
 
 #define SCREEN_H [UIScreen mainScreen].bounds.size.height
 #define SCREEN_W [UIScreen mainScreen].bounds.size.width
@@ -25,6 +28,9 @@
 
 @property (nonatomic,strong) addArticletableHeadView * headView;
 
+@property (nonatomic,strong) NSMutableArray * dataArr;
+
+@property (nonatomic,strong) NetWork * net;
 @end
 
 @implementation AddArticleController
@@ -33,18 +39,24 @@
     [super viewDidLoad];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
+    self.dataArr = [NSMutableArray new];
     [self tableViewConfiguration];
 }
 
-
+- (NetWork *)net{
+    if (!_net) {
+        
+        _net = [[NetWork alloc]init];
+    }
+    return _net;
+}
 
 - (void)tableViewConfiguration{
 
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    self.tableView.rowHeight = SCREEN_W / 4;
+    self.tableView.rowHeight = SCREEN_W / 4 + 20;
     self.tableView.tableFooterView = [[UIView alloc]init];
     
     self.tableView.tableHeaderView = self.headView;
@@ -130,13 +142,14 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
 
-    typeOneCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    ImportArticleCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
 
     if (cell == nil) {
         
-        cell = [[typeOneCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"cell"];
-        
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"ImportArticleCell" owner:self options:nil]firstObject];
     }
+    
+    
     
     return cell;
 }

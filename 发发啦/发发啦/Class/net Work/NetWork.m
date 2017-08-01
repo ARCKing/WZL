@@ -27,7 +27,8 @@
 #import "memberModel.h"
 #import "myPrenticeModel.h"
 #import "guaoGaoModel.h"
-
+#import "JSONModel.h"
+#import "ImportArticleModel.h"
 
 #define KURL @"http://wz.lgmdl.com"
 
@@ -2968,5 +2969,103 @@
     }];
 
 }
+
+
+
+
+#pragma mark- 获取用户导入的文章
+/**获取用户导入的文章*/
+- (void)getCustomerAuditImportArticleWithPage:(NSInteger)page{
+    
+    AFHTTPSessionManager * manger = [AFHTTPSessionManager manager];
+    manger.requestSerializer = [AFHTTPRequestSerializer serializer];
+    
+    NSDictionary * dict = [[NSUserDefaults standardUserDefaults]objectForKey:@"userInfo"];
+    
+    NSMutableDictionary * dic = [NSMutableDictionary new];
+    dic[@"uid"] = dict[@"uid"];
+    dic[@"token"] = dict[@"token"];
+    dic[@"page"] = [NSString stringWithFormat:@"%ld",page];
+    
+    NSString * urls = [NSString stringWithFormat:@"%@/App/Collection/UserCaiData",KURL];
+    [manger POST:urls parameters:dic  constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"code=%@",responseObject[@"code"]);
+        NSLog(@"message=%@",responseObject[@"message"]);
+        NSLog(@"responseObject=%@",responseObject);
+        
+        NSString * code = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
+        NSString * message = [NSString stringWithFormat:@"%@",responseObject[@"message"]];
+        
+        NSMutableArray * dataModelArr = [NSMutableArray new];
+        if ([code isEqualToString:@"1"]) {
+            
+            NSArray * data = [NSArray arrayWithArray:responseObject[@"data"]];
+            
+            if (data.count > 0) {
+                
+                for (NSDictionary * modelDic in data) {
+                    
+                    ImportArticleModel * model = [[ImportArticleModel alloc]initWithDictionary:modelDic error:nil];
+                    
+                   
+                }
+            }
+            
+        }
+        
+        self.customerImportArticleListBK(code, message, nil, dataModelArr, nil);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        NSLog(@"%@",error);
+        
+    }];
+    
+    
+}
+
+#pragma mark- 用户导入文章url
+/**用户导入文章url*/
+- (void)customerImportArticleURL:(NSString *)articleUrl andc_id:(NSString *)c_id{
+    
+    AFHTTPSessionManager * manger = [AFHTTPSessionManager manager];
+    manger.requestSerializer = [AFHTTPRequestSerializer serializer];
+    
+    NSDictionary * dict = [[NSUserDefaults standardUserDefaults]objectForKey:@"userInfo"];
+    
+    NSMutableDictionary * dic = [NSMutableDictionary new];
+    dic[@"uid"] = dict[@"uid"];
+    dic[@"c_id"] = c_id;
+    dic[@"url"] = [NSString stringWithFormat:@"%@",articleUrl];
+    
+    NSString * urls = [NSString stringWithFormat:@"%@/App/Wxcai/wxCollect",KURL];
+    [manger POST:urls parameters:dic  constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"code=%@",responseObject[@"code"]);
+        NSLog(@"message=%@",responseObject[@"message"]);
+        NSLog(@"responseObject=%@",responseObject);
+        NSString * code = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
+        NSString * message = [NSString stringWithFormat:@"%@",responseObject[@"message"]];
+        
+        self.importArticleLinkBK(code, message);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        NSLog(@"%@",error);
+        
+    }];
+    
+}
+
+
 
 @end

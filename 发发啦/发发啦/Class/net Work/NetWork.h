@@ -13,6 +13,11 @@
 #import "newTaskModel.h"
 #import "shareEarnModel.h"
 
+typedef void(^MessageFromNetComeBackBolck) (NSString *,NSString *);
+
+typedef void(^DataFromNetComeBackBolck) (NSString *,NSString *,NSString *,NSArray * ,NSArray *);
+
+
 typedef void(^messageBackLogInBolck) (NSString *,NSString *);
 typedef void(^messageBackRegisterBolck) (NSString *,NSString *);
 typedef void(^resetPassWordUnLoginBlock) (NSString *);
@@ -78,6 +83,12 @@ typedef void(^isHiddenWhenReViewBlock) (NSString *,BOOL);
 typedef void(^activityNoticeBlock) (NSString * ,NSString * ,NSString *);
 
 @interface NetWork : NSObject
+
+/**我导入的文章*/
+@property(nonatomic,copy)DataFromNetComeBackBolck customerImportArticleListBK;
+
+/**导入文章链接*/
+@property(nonatomic,copy)MessageFromNetComeBackBolck importArticleLinkBK;
 
 
 @property(nonatomic,copy)activityNoticeBlock activityNoticBK;
@@ -376,4 +387,11 @@ typedef void(^activityNoticeBlock) (NSString * ,NSString * ,NSString *);
 #pragma mark- 原生分享链接
 - (void)getLocationLinkWithArticleID:(NSString *)aid;
 
+#pragma mark- 获取用户导入的文章
+/**获取用户导入的文章*/
+- (void)getCustomerAuditImportArticleWithPage:(NSInteger)page;
+
+#pragma mark- 用户导入文章url
+/**用户导入文章url*/
+- (void)customerImportArticleURL:(NSString *)articleUrl andc_id:(NSString *)c_id;
 @end
