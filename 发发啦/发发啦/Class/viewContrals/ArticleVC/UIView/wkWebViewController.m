@@ -41,7 +41,10 @@
     
     [self wkWebCreat];
     
-    [self.view addSubview:self.addArticleView];
+    if (!self.isTeach) {
+        
+        [self.view addSubview:self.addArticleView];
+    }
 }
 
 

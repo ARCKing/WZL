@@ -70,20 +70,17 @@
                         <constraint firstItem="HC8-JW-O3a" firstAttribute="leading" secondItem="njL-nk-cOg" secondAttribute="leading" constant="5" id="wcJ-Iw-FmD"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k0D-m2-KWp">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="k0D-m2-KWp">
                     <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="k0D-m2-KWp" firstAttribute="top" secondItem="njL-nk-cOg" secondAttribute="bottom" id="AXm-Sh-8Tj"/>
                 <constraint firstAttribute="trailing" secondItem="njL-nk-cOg" secondAttribute="trailing" id="MFN-y6-rcZ"/>
                 <constraint firstItem="njL-nk-cOg" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="QBy-Kp-fEB"/>
-                <constraint firstItem="k0D-m2-KWp" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="aPC-I3-cGi"/>
-                <constraint firstAttribute="trailing" secondItem="k0D-m2-KWp" secondAttribute="trailing" id="e3J-FP-SzO"/>
                 <constraint firstItem="njL-nk-cOg" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eOT-ty-01Z"/>
-                <constraint firstAttribute="bottom" secondItem="k0D-m2-KWp" secondAttribute="bottom" id="sRg-5m-rh5"/>
             </constraints>
         </view>
     </objects>

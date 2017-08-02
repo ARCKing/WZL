@@ -2980,7 +2980,7 @@
     AFHTTPSessionManager * manger = [AFHTTPSessionManager manager];
     manger.requestSerializer = [AFHTTPRequestSerializer serializer];
     
-    NSDictionary * dict = [[NSUserDefaults standardUserDefaults]objectForKey:@"userInfo"];
+    NSDictionary * dict = [[NSUserDefaults standardUserDefaults]objectForKey:@"usermessage"];
     
     NSMutableDictionary * dic = [NSMutableDictionary new];
     dic[@"uid"] = dict[@"uid"];
@@ -3012,7 +3012,7 @@
                     
                     ImportArticleModel * model = [[ImportArticleModel alloc]initWithDictionary:modelDic error:nil];
                     
-                   
+                    [dataModelArr addObject:model];
                 }
             }
             
@@ -3036,7 +3036,7 @@
     AFHTTPSessionManager * manger = [AFHTTPSessionManager manager];
     manger.requestSerializer = [AFHTTPRequestSerializer serializer];
     
-    NSDictionary * dict = [[NSUserDefaults standardUserDefaults]objectForKey:@"userInfo"];
+    NSDictionary * dict = [[NSUserDefaults standardUserDefaults]objectForKey:@"usermessage"];
     
     NSMutableDictionary * dic = [NSMutableDictionary new];
     dic[@"uid"] = dict[@"uid"];

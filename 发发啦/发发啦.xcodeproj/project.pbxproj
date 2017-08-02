@@ -358,6 +358,9 @@
 		A9B96C531D93C170001727E7 /* upload_ic_add_video@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B96C511D93C170001727E7 /* upload_ic_add_video@3x.png */; };
 		A9B96C541D93C170001727E7 /* upload_ic_arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9B96C521D93C170001727E7 /* upload_ic_arrow_down@2x.png */; };
 		A9BA97DE1DBEEF130069DC39 /* searchBarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BA97DD1DBEEF130069DC39 /* searchBarModel.m */; };
+		A9BB9CA81F31667C00A0A440 /* UITableView+CYLTableViewPlaceHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BB9CA71F31667C00A0A440 /* UITableView+CYLTableViewPlaceHolder.m */; };
+		A9BB9CAB1F31674C00A0A440 /* icon_noD@2X.png in Resources */ = {isa = PBXBuildFile; fileRef = A9BB9CA91F31674C00A0A440 /* icon_noD@2X.png */; };
+		A9BB9CAC1F31674C00A0A440 /* icon_noD@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9BB9CAA1F31674C00A0A440 /* icon_noD@3x.png */; };
 		A9BBA7581D7CFD15009A464E /* myTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BBA7571D7CFD15009A464E /* myTableViewCell.m */; };
 		A9BBA75B1D7CFF92009A464E /* red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9BBA7591D7CFF92009A464E /* red@2x.png */; };
 		A9BBA75C1D7CFF92009A464E /* red@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9BBA75A1D7CFF92009A464E /* red@3x.png */; };
@@ -987,6 +990,12 @@
 		A9B96C521D93C170001727E7 /* upload_ic_arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "upload_ic_arrow_down@2x.png"; sourceTree = "<group>"; };
 		A9BA97DC1DBEEF130069DC39 /* searchBarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = searchBarModel.h; sourceTree = "<group>"; };
 		A9BA97DD1DBEEF130069DC39 /* searchBarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = searchBarModel.m; sourceTree = "<group>"; };
+		A9BB9CA41F31667C00A0A440 /* CYLTableViewPlaceHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYLTableViewPlaceHolder.h; sourceTree = "<group>"; };
+		A9BB9CA51F31667C00A0A440 /* CYLTableViewPlaceHolderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CYLTableViewPlaceHolderDelegate.h; sourceTree = "<group>"; };
+		A9BB9CA61F31667C00A0A440 /* UITableView+CYLTableViewPlaceHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+CYLTableViewPlaceHolder.h"; sourceTree = "<group>"; };
+		A9BB9CA71F31667C00A0A440 /* UITableView+CYLTableViewPlaceHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+CYLTableViewPlaceHolder.m"; sourceTree = "<group>"; };
+		A9BB9CA91F31674C00A0A440 /* icon_noD@2X.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_noD@2X.png"; sourceTree = "<group>"; };
+		A9BB9CAA1F31674C00A0A440 /* icon_noD@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_noD@3x.png"; sourceTree = "<group>"; };
 		A9BBA7561D7CFD15009A464E /* myTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myTableViewCell.h; sourceTree = "<group>"; };
 		A9BBA7571D7CFD15009A464E /* myTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = myTableViewCell.m; sourceTree = "<group>"; };
 		A9BBA7591D7CFF92009A464E /* red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "red@2x.png"; sourceTree = "<group>"; };
@@ -1499,6 +1508,7 @@
 		A98403D01D6184840078C52B /* FramWork */ = {
 			isa = PBXGroup;
 			children = (
+				A9BB9CA31F31667C00A0A440 /* CYLTableViewPlaceHolder */,
 				A98D4F981F30748E0076AA8E /* JSONModel */,
 				A97DD1871F14A44A00A4CF40 /* KeychainUUID */,
 				A99073FA1ECC2926004CCE3D /* MD5 */,
@@ -1545,6 +1555,8 @@
 		A98403E71D61CA350078C52B /* image */ = {
 			isa = PBXGroup;
 			children = (
+				A9BB9CA91F31674C00A0A440 /* icon_noD@2X.png */,
+				A9BB9CAA1F31674C00A0A440 /* icon_noD@3x.png */,
 				A9C330741F1C6415004C44A5 /* img_weixin_tt.png */,
 				A9C330721F1C6192004C44A5 /* post_bg.png */,
 				A9C330611F1C4B9E004C44A5 /* icon_add_article.png */,
@@ -2249,6 +2261,17 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
+		A9BB9CA31F31667C00A0A440 /* CYLTableViewPlaceHolder */ = {
+			isa = PBXGroup;
+			children = (
+				A9BB9CA41F31667C00A0A440 /* CYLTableViewPlaceHolder.h */,
+				A9BB9CA51F31667C00A0A440 /* CYLTableViewPlaceHolderDelegate.h */,
+				A9BB9CA61F31667C00A0A440 /* UITableView+CYLTableViewPlaceHolder.h */,
+				A9BB9CA71F31667C00A0A440 /* UITableView+CYLTableViewPlaceHolder.m */,
+			);
+			path = CYLTableViewPlaceHolder;
+			sourceTree = "<group>";
+		};
 		A9C330641F1C4C4A004C44A5 /* AddArticleController */ = {
 			isa = PBXGroup;
 			children = (
@@ -2557,6 +2580,7 @@
 				A9E4AC8A1DC6D26200395775 /* task@2x.png in Resources */,
 				A9CE06511D9E680A00FE2DB9 /* pic_share_copy_link@2x.png in Resources */,
 				A98F92E01D70190500A7137B /* group_vip2@2x.png in Resources */,
+				A9BB9CAC1F31674C00A0A440 /* icon_noD@3x.png in Resources */,
 				A9CE06271D9E114200FE2DB9 /* c5-1@2x.png in Resources */,
 				A984041E1D61CA350078C52B /* task_ad@2x.png in Resources */,
 				A9CE06471D9E59B900FE2DB9 /* loading7@3x.png in Resources */,
@@ -2593,6 +2617,7 @@
 				A9C7D4FF1DC19C1800295F36 /* close_black@2x.png in Resources */,
 				A9DB7F4D1DB8AAAB00CDEDFD /* changePassWordVc.xib in Resources */,
 				A98403C81D6183AF0078C52B /* LaunchScreen.storyboard in Resources */,
+				A9BB9CAB1F31674C00A0A440 /* icon_noD@2X.png in Resources */,
 				A9455A471DC8967D00012D27 /* group_refresh@3x.png in Resources */,
 				A98404091D61CA350078C52B /* recruit_day@3x.png in Resources */,
 				A9F21D951E9F5EAC009DBC54 /* zfbtx@2x.png in Resources */,
@@ -2827,6 +2852,7 @@
 				A98D4FB81F30755C0076AA8E /* ImportArticleModel.m in Sources */,
 				A9C3306B1F1C5941004C44A5 /* AddArticleController.m in Sources */,
 				A9A7EFCD1DB461EF00A88E10 /* UIImageView+HighlightedWebCache.m in Sources */,
+				A9BB9CA81F31667C00A0A440 /* UITableView+CYLTableViewPlaceHolder.m in Sources */,
 				A95331951DCB514B00A561C3 /* MJRefreshBackGifFooter.m in Sources */,
 				A9616EB41D9CB63500AB55FD /* NJKWebViewProgressView.m in Sources */,
 				A99E1B531D640775005C9C2A /* HomeNextViewController.m in Sources */,
