@@ -129,6 +129,10 @@
 		A98106661F32D8530026123F /* YiDianZiXunController.m in Sources */ = {isa = PBXBuildFile; fileRef = A98106641F32D8530026123F /* YiDianZiXunController.m */; };
 		A98106671F32D8530026123F /* YiDianZiXunController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A98106651F32D8530026123F /* YiDianZiXunController.xib */; };
 		A981066B1F32F85A0026123F /* YiDianZiXunModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A981066A1F32F85A0026123F /* YiDianZiXunModel.m */; };
+		A98106721F331CE40026123F /* bg_coupon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A98106711F331CE40026123F /* bg_coupon.jpg */; };
+		A98106751F331DBD0026123F /* ListTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A98106741F331DBD0026123F /* ListTableView.m */; };
+		A981067E1F3323790026123F /* ListTaoBaoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A981067C1F3323790026123F /* ListTaoBaoCell.m */; };
+		A981067F1F3323790026123F /* ListTaoBaoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A981067D1F3323790026123F /* ListTaoBaoCell.xib */; };
 		A98403B71D6183AF0078C52B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A98403B61D6183AF0078C52B /* main.m */; };
 		A98403BA1D6183AF0078C52B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A98403B91D6183AF0078C52B /* AppDelegate.m */; };
 		A98403BD1D6183AF0078C52B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A98403BC1D6183AF0078C52B /* ViewController.m */; };
@@ -671,6 +675,12 @@
 		A98106651F32D8530026123F /* YiDianZiXunController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YiDianZiXunController.xib; sourceTree = "<group>"; };
 		A98106691F32F85A0026123F /* YiDianZiXunModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YiDianZiXunModel.h; sourceTree = "<group>"; };
 		A981066A1F32F85A0026123F /* YiDianZiXunModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YiDianZiXunModel.m; sourceTree = "<group>"; };
+		A98106711F331CE40026123F /* bg_coupon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bg_coupon.jpg; sourceTree = "<group>"; };
+		A98106731F331DBD0026123F /* ListTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableView.h; sourceTree = "<group>"; };
+		A98106741F331DBD0026123F /* ListTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableView.m; sourceTree = "<group>"; };
+		A981067B1F3323790026123F /* ListTaoBaoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTaoBaoCell.h; sourceTree = "<group>"; };
+		A981067C1F3323790026123F /* ListTaoBaoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTaoBaoCell.m; sourceTree = "<group>"; };
+		A981067D1F3323790026123F /* ListTaoBaoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListTaoBaoCell.xib; sourceTree = "<group>"; };
 		A98403B21D6183AF0078C52B /* 发发啦.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "发发啦.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A98403B61D6183AF0078C52B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A98403B81D6183AF0078C52B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
@@ -1478,6 +1488,9 @@
 		A981066D1F331BB60026123F /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				A981067B1F3323790026123F /* ListTaoBaoCell.h */,
+				A981067C1F3323790026123F /* ListTaoBaoCell.m */,
+				A981067D1F3323790026123F /* ListTaoBaoCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1499,6 +1512,8 @@
 		A98106701F331BB60026123F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A98106731F331DBD0026123F /* ListTableView.h */,
+				A98106741F331DBD0026123F /* ListTableView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1611,6 +1626,7 @@
 		A98403E71D61CA350078C52B /* image */ = {
 			isa = PBXGroup;
 			children = (
+				A98106711F331CE40026123F /* bg_coupon.jpg */,
 				A9BB9CA91F31674C00A0A440 /* icon_noD@2X.png */,
 				A9BB9CAA1F31674C00A0A440 /* icon_noD@3x.png */,
 				A9C330741F1C6415004C44A5 /* img_weixin_tt.png */,
@@ -2569,6 +2585,7 @@
 				A96E6FC31DC9CCBC007DD7D0 /* icon16.png in Resources */,
 				A9AE664E1D66AE060067B081 /* home_play@2x.png in Resources */,
 				A98404191D61CA350078C52B /* tab_invite_slt@3x.png in Resources */,
+				A981067F1F3323790026123F /* ListTaoBaoCell.xib in Resources */,
 				A9CE063B1D9E59B900FE2DB9 /* loading1@3x.png in Resources */,
 				A98F92E71D7019FB00A7137B /* packet@3x.png in Resources */,
 				A9AE66461D66AD800067B081 /* home_collect@2x.png in Resources */,
@@ -2589,6 +2606,7 @@
 				A9AE664F1D66AE060067B081 /* home_play@3x.png in Resources */,
 				A9A4F77C1D9BB07600D2ED9C /* info@2x.png in Resources */,
 				A98F92D01D6FE54500A7137B /* icn_limited@3x.png in Resources */,
+				A98106721F331CE40026123F /* bg_coupon.jpg in Resources */,
 				A94687951EC16121003D8B3A /* star_open.png in Resources */,
 				A9CE063D1D9E59B900FE2DB9 /* loading2@3x.png in Resources */,
 				A94687AF1EC19AC4003D8B3A /* fire_usel@3x.png in Resources */,
@@ -2903,11 +2921,13 @@
 				A9AF19BC1D65B130006FBAAD /* InComeRankView.m in Sources */,
 				A9D6E35F1DB5B0C600A950E9 /* userInComeRankModel.m in Sources */,
 				A9991E1F1D960AAB00521A9C /* buttonOrderView.m in Sources */,
+				A98106751F331DBD0026123F /* ListTableView.m in Sources */,
 				A944E1E21D75183000900DCB /* EditProfileViewController.m in Sources */,
 				A9C6A75F1DB71995000F8088 /* userProFitModel.m in Sources */,
 				A98D4FBC1F3079070076AA8E /* ImportArticleCell.m in Sources */,
 				A98403E61D61AA870078C52B /* TabViewController.m in Sources */,
 				A98F92EA1D70306E00A7137B /* SearchViewController.m in Sources */,
+				A981067E1F3323790026123F /* ListTaoBaoCell.m in Sources */,
 				A94A4AC41D6D84B800755160 /* AFURLSessionManager.m in Sources */,
 				A968F5AB1DD1C36D00181C36 /* dayTaskModel.m in Sources */,
 				A9AFBE021DD00B6E00964A86 /* UMSocialUIManager.m in Sources */,
