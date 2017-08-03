@@ -1761,9 +1761,9 @@
             }else{
             
             
-                NSLog(@"唤醒徒弟!");
+                NSLog(@"超级折扣");
             
-                [self awakensTheDisciple];
+//                [self awakensTheDisciple];
             }
         }else{
             
@@ -2255,7 +2255,7 @@
     [self.tableHeadView addSubview:_eightButtonView];
     
     
-    NSArray * buttonTitleArray = @[@"签到",@"我要提现",@"收入排行",@"联系我们",@"导入文章",@"唤醒徒弟",@"系统设置",@"新手教程"];
+    NSArray * buttonTitleArray = @[@"签到",@"我要提现",@"收入排行",@"联系我们",@"导入文章",@"超级折扣",@"系统设置",@"新手教程"];
     NSArray * buttonPicArray = @[@"xgmm.png",@"xtxx.png",@"gywm.png",@"home_contact.png",@"icon_add_article",@"home_awaken.png",@"home_set.png",@"home_play.png"];
 
     for (int i = 0; i  < 8; i++) {
@@ -2317,7 +2317,7 @@
         
         if (i == 5 && self.hidenReview == NO) {
             
-            title.text = @"唤醒徒弟";
+            title.text = @"超级折扣";
         }
 
         

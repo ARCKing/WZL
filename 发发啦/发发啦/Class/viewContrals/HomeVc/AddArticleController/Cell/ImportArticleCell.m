@@ -49,10 +49,20 @@
     }
     
     
-    [self.iconImage sd_setImageWithURL:[NSURL URLWithString:model.thumb] placeholderImage:[UIImage imageNamed:@"img_loading.jpg"]];
     
     self.titlelABEL.text = model.title;
-    self.addtime.text = [self LabelFinallyTime:model.addtime];
+    
+    if (model.addtime) {
+        self.addtime.text = [self LabelFinallyTime:model.addtime];
+        [self.iconImage sd_setImageWithURL:[NSURL URLWithString:model.thumb] placeholderImage:[UIImage imageNamed:@"img_loading.jpg"]];
+
+    }else{
+    
+        self.addtime.text = model.date;
+        [self.iconImage sd_setImageWithURL:[NSURL URLWithString:model.image] placeholderImage:[UIImage imageNamed:@"img_loading.jpg"]];
+
+    }
+    
     
 
 

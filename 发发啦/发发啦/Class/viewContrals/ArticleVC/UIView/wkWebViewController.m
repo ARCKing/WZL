@@ -10,6 +10,7 @@
 #import <WebKit/WebKit.h>
 #import "MBProgressHUD.h"
 #import "addArticleBottomView.h"
+#import "NetWork.h"
 
 #define SCREEN_H [UIScreen mainScreen].bounds.size.height
 #define SCREEN_W [UIScreen mainScreen].bounds.size.width
@@ -27,6 +28,10 @@
 
 @property(nonatomic,strong)UIButton * popButton;
 
+@property(nonatomic,copy)NSString * articleTitle;
+
+@property(nonatomic,copy)NetWork * net;
+
 @end
 
 @implementation wkWebViewController
@@ -41,10 +46,7 @@
     
     [self wkWebCreat];
     
-    if (!self.isTeach) {
-        
-        [self.view addSubview:self.addArticleView];
-    }
+   
 }
 
 
@@ -62,9 +64,50 @@
 - (void)addArticleButtonAction{
 
     NSLog(@"addArticleButtonAction");
+    __weak wkWebViewController * weakSelf = self;
+
+    if (self.isYiDianZiXun) {
+        
+        [self.net YiDianZiXunImportArticelWithTitle:self.importArticleModel.title thumb:self.importArticleModel.image _id:self.importArticleModel.docid];
+        
+        self.net.importArticleTitleBK = ^(NSString *code, NSString *message) {
+            
+            [weakSelf showHudWithMessage:message andDissmissdelay:2.0];
+        };
+        
+    }else{
+    
+        [self.net customerImportArticleTitle:self.articleTitle andc_id:nil];
+    
+        self.net.importArticleTitleBK = ^(NSString *code, NSString *message) {
+        
+            [weakSelf showHudWithMessage:message andDissmissdelay:2.0];
+        };
+    }
 }
 
 
+- (void)showHudWithMessage:(NSString *)message andDissmissdelay:(NSTimeInterval)time{
+
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.label.text = message;
+    hud.label.font = [UIFont systemFontOfSize:16.0];
+    hud.label.numberOfLines = 0;
+    [hud hideAnimated:YES afterDelay:time];
+}
+
+
+
+- (NetWork *)net{
+    
+    if (!_net) {
+        
+        _net = [[NetWork alloc]init];
+    }
+
+    return _net;
+}
 
 
 - (void)navViewCreat{
@@ -227,6 +270,25 @@
     if ([keyPath isEqualToString:@"title"]) {
         
         self.titleLabel.text = self.wkWeb.title;
+        
+        self.articleTitle = self.wkWeb.title;
+        
+        
+        NSRange range = [self.articleTitle rangeOfString:@"搜狗微信"];
+            
+        if (range.location == NSNotFound) {
+            
+            if (!self.isTeach) {
+                
+                [self.view addSubview:self.addArticleView];
+            }
+        
+        }else{
+        
+            [self.addArticleView removeFromSuperview];
+        
+        }
+        
     }
 }
 

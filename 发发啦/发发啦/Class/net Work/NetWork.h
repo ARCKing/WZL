@@ -90,6 +90,12 @@ typedef void(^activityNoticeBlock) (NSString * ,NSString * ,NSString *);
 /**导入文章链接*/
 @property(nonatomic,copy)MessageFromNetComeBackBolck importArticleLinkBK;
 
+/**导入文章标题*/
+@property(nonatomic,copy)MessageFromNetComeBackBolck importArticleTitleBK;
+
+/**一点资讯文章数据*/
+@property(nonatomic,copy)DataFromNetComeBackBolck yiDiZiXunArticleListBK;
+
 
 @property(nonatomic,copy)activityNoticeBlock activityNoticBK;
 
@@ -394,4 +400,20 @@ typedef void(^activityNoticeBlock) (NSString * ,NSString * ,NSString *);
 #pragma mark- 用户导入文章url
 /**用户导入文章url*/
 - (void)customerImportArticleURL:(NSString *)articleUrl andc_id:(NSString *)c_id;
+
+#pragma mark- 微信搜狗采集
+- (void)customerImportArticleTitle:(NSString *)articleTitle andc_id:(NSString *)c_id;
+
+#pragma mark- 一点资讯数据请求
+/** 一点资讯数据请求*/
+- (void)YiDianZiXunGetArticleListWithCstart:(NSInteger)cstart
+                                       Cend:(NSInteger)cend
+                                    refresh:(NSString *)refresh
+                                    addtime:(NSString *)addtime;
+
+#pragma mark- 一点资讯采集文章
+/**一点资讯采集文章*/
+- (void)YiDianZiXunImportArticelWithTitle:(NSString *)title
+                                    thumb:(NSString *)thumb
+                                      _id:(NSString *)_id;
 @end

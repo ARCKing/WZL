@@ -126,6 +126,9 @@
 		A97F05D21DFA442500392CA0 /* SystemMessage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A97F05D01DFA442500392CA0 /* SystemMessage+CoreDataProperties.m */; };
 		A97F4A5F1DE3D4FD0006CD87 /* icon100.png in Resources */ = {isa = PBXBuildFile; fileRef = A97F4A5E1DE3D4FD0006CD87 /* icon100.png */; };
 		A97F4A631DE43C0D0006CD87 /* icon_1.png in Resources */ = {isa = PBXBuildFile; fileRef = A97F4A621DE43C0D0006CD87 /* icon_1.png */; };
+		A98106661F32D8530026123F /* YiDianZiXunController.m in Sources */ = {isa = PBXBuildFile; fileRef = A98106641F32D8530026123F /* YiDianZiXunController.m */; };
+		A98106671F32D8530026123F /* YiDianZiXunController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A98106651F32D8530026123F /* YiDianZiXunController.xib */; };
+		A981066B1F32F85A0026123F /* YiDianZiXunModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A981066A1F32F85A0026123F /* YiDianZiXunModel.m */; };
 		A98403B71D6183AF0078C52B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A98403B61D6183AF0078C52B /* main.m */; };
 		A98403BA1D6183AF0078C52B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A98403B91D6183AF0078C52B /* AppDelegate.m */; };
 		A98403BD1D6183AF0078C52B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A98403BC1D6183AF0078C52B /* ViewController.m */; };
@@ -663,6 +666,11 @@
 		A97F05D01DFA442500392CA0 /* SystemMessage+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SystemMessage+CoreDataProperties.m"; sourceTree = "<group>"; };
 		A97F4A5E1DE3D4FD0006CD87 /* icon100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon100.png; sourceTree = "<group>"; };
 		A97F4A621DE43C0D0006CD87 /* icon_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_1.png; sourceTree = "<group>"; };
+		A98106631F32D8530026123F /* YiDianZiXunController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YiDianZiXunController.h; sourceTree = "<group>"; };
+		A98106641F32D8530026123F /* YiDianZiXunController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YiDianZiXunController.m; sourceTree = "<group>"; };
+		A98106651F32D8530026123F /* YiDianZiXunController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = YiDianZiXunController.xib; sourceTree = "<group>"; };
+		A98106691F32F85A0026123F /* YiDianZiXunModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YiDianZiXunModel.h; sourceTree = "<group>"; };
+		A981066A1F32F85A0026123F /* YiDianZiXunModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YiDianZiXunModel.m; sourceTree = "<group>"; };
 		A98403B21D6183AF0078C52B /* 发发啦.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "发发啦.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A98403B61D6183AF0078C52B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A98403B81D6183AF0078C52B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../AppDelegate.h; sourceTree = "<group>"; };
@@ -1447,6 +1455,54 @@
 			path = KeychainUUID;
 			sourceTree = "<group>";
 		};
+		A98106681F32F8330026123F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A98106691F32F85A0026123F /* YiDianZiXunModel.h */,
+				A981066A1F32F85A0026123F /* YiDianZiXunModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A981066C1F331BB60026123F /* TaoBaoDiscount */ = {
+			isa = PBXGroup;
+			children = (
+				A981066D1F331BB60026123F /* Cell */,
+				A981066E1F331BB60026123F /* Controller */,
+				A981066F1F331BB60026123F /* Model */,
+				A98106701F331BB60026123F /* View */,
+			);
+			path = TaoBaoDiscount;
+			sourceTree = "<group>";
+		};
+		A981066D1F331BB60026123F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		A981066E1F331BB60026123F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A981066F1F331BB60026123F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A98106701F331BB60026123F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A98403A91D6183AF0078C52B = {
 			isa = PBXGroup;
 			children = (
@@ -2011,6 +2067,7 @@
 		A99E1B501D6406C3005C9C2A /* HomeVc */ = {
 			isa = PBXGroup;
 			children = (
+				A981066C1F331BB60026123F /* TaoBaoDiscount */,
 				A9C330641F1C4C4A004C44A5 /* AddArticleController */,
 				A999354F1E8B94A800975D36 /* AliAndWeiXin */,
 				A94703EF1D86A96900D2EB96 /* ringVC */,
@@ -2275,11 +2332,15 @@
 		A9C330641F1C4C4A004C44A5 /* AddArticleController */ = {
 			isa = PBXGroup;
 			children = (
+				A98106681F32F8330026123F /* Model */,
 				A9C3306E1F1C5F97004C44A5 /* View */,
 				A9C3306D1F1C5F8A004C44A5 /* Cell */,
 				A9C330681F1C5941004C44A5 /* AddArticleController.h */,
 				A9C330691F1C5941004C44A5 /* AddArticleController.m */,
 				A9C3306A1F1C5941004C44A5 /* AddArticleController.xib */,
+				A98106631F32D8530026123F /* YiDianZiXunController.h */,
+				A98106641F32D8530026123F /* YiDianZiXunController.m */,
+				A98106651F32D8530026123F /* YiDianZiXunController.xib */,
 			);
 			path = AddArticleController;
 			sourceTree = "<group>";
@@ -2454,7 +2515,7 @@
 					A98403B11D6183AF0078C52B = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = LY9Q54F6JE;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -2503,6 +2564,7 @@
 				A98F92E21D70190500A7137B /* group_vip3@2x.png in Resources */,
 				A9B96C501D93C101001727E7 /* player_arrow_down@3x.png in Resources */,
 				A94687AD1EC19AC4003D8B3A /* fire_sel@3x.png in Resources */,
+				A98106671F32D8530026123F /* YiDianZiXunController.xib in Resources */,
 				A9A7EFDE1DB4856800A88E10 /* welfare_checkbox@2x.png in Resources */,
 				A96E6FC31DC9CCBC007DD7D0 /* icon16.png in Resources */,
 				A9AE664E1D66AE060067B081 /* home_play@2x.png in Resources */,
@@ -2889,6 +2951,7 @@
 				A9A7EFC51DB461EF00A88E10 /* SDWebImageDecoder.m in Sources */,
 				A9A7EFCB1DB461EF00A88E10 /* UIImage+GIF.m in Sources */,
 				A99E1B571D640892005C9C2A /* SignInRedView.m in Sources */,
+				A981066B1F32F85A0026123F /* YiDianZiXunModel.m in Sources */,
 				A9A7EFCA1DB461EF00A88E10 /* UIButton+WebCache.m in Sources */,
 				A94703F51D86AA6A00D2EB96 /* DetailMessageVC.m in Sources */,
 				A91B3A571DD5BD88004C0452 /* luckModel.m in Sources */,
@@ -2928,6 +2991,7 @@
 				A95331981DCB514B00A561C3 /* MJRefreshGifHeader.m in Sources */,
 				A99935551E8B94D700975D36 /* WeiXinAndAliPayWithDrawVC.m in Sources */,
 				A9AFBE001DD00B6E00964A86 /* UMSocialShareSelectionViewCell.m in Sources */,
+				A98106661F32D8530026123F /* YiDianZiXunController.m in Sources */,
 				A98403B71D6183AF0078C52B /* main.m in Sources */,
 				A98403DA1D619E270078C52B /* Money_ViewController.m in Sources */,
 				A99E1B691D6409FB005C9C2A /* SetView.m in Sources */,
@@ -3063,8 +3127,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "发发啦/发发啦.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Guangxi City Network Technology Co., Ltd. (939XX592SN)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Guangxi City Network Technology Co., Ltd.";
-				DEVELOPMENT_TEAM = LY9Q54F6JE;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3101,8 +3165,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gx.wzl.enterprise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8f226c10-9761-45f1-a1dd-a1e7616f3a6c";
-				PROVISIONING_PROFILE_SPECIFIER = wzlEnterDisProfile;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -3112,8 +3176,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "发发啦/发发啦.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Guangxi City Network Technology Co., Ltd. (939XX592SN)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Guangxi City Network Technology Co., Ltd.";
-				DEVELOPMENT_TEAM = LY9Q54F6JE;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3150,8 +3214,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gx.wzl.enterprise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8f226c10-9761-45f1-a1dd-a1e7616f3a6c";
-				PROVISIONING_PROFILE_SPECIFIER = wzlEnterDisProfile;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

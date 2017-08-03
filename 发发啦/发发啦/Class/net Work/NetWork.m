@@ -29,7 +29,7 @@
 #import "guaoGaoModel.h"
 #import "JSONModel.h"
 #import "ImportArticleModel.h"
-
+#import "MD5Tool.h"
 #define KURL @"http://wz.lgmdl.com"
 
 @interface NetWork ()
@@ -3066,6 +3066,156 @@
     
 }
 
+#pragma mark- 微信搜狗采集
+- (void)customerImportArticleTitle:(NSString *)articleTitle andc_id:(NSString *)c_id{
+    AFHTTPSessionManager * manger = [AFHTTPSessionManager manager];
+    manger.requestSerializer = [AFHTTPRequestSerializer serializer];
+    
+    
+    NSString * key = @"9GM6&X3JG%GGfZuH1R0A3";
+    
+    NSDictionary * dict = [[NSUserDefaults standardUserDefaults]objectForKey:@"usermessage"];
+    
+    NSMutableDictionary * dic = [NSMutableDictionary new];
+    dic[@"uid"] = dict[@"uid"];
+    dic[@"c_id"] = c_id;
+    dic[@"title"] = articleTitle;
+    
+    NSString * sourceString = [NSString stringWithFormat:@"title=%@&uid=%@&key=%@",articleTitle,dict[@"uid"],key];
+
+    NSString * md5Code = [MD5Tool MD5ForUpper32Bate:sourceString];
+
+    dic[@"sign"] = md5Code;
+    
+
+    NSString * urls = [NSString stringWithFormat:@"%@/App/Wxcai/setData",KURL];
+    [manger POST:urls parameters:dic  constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"code=%@",responseObject[@"code"]);
+        NSLog(@"message=%@",responseObject[@"message"]);
+        NSLog(@"responseObject=%@",responseObject);
+        NSString * code = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
+        NSString * message = [NSString stringWithFormat:@"%@",responseObject[@"message"]];
+        
+        self.importArticleTitleBK(code, message);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        NSLog(@"%@",error);
+        
+    }];
+
+}
+
+
+#pragma mark- 一点资讯数据请求
+/** 一点资讯数据请求*/
+- (void)YiDianZiXunGetArticleListWithCstart:(NSInteger)cstart
+                                       Cend:(NSInteger)cend
+                                    refresh:(NSString *)refresh
+                                    addtime:(NSString *)addtime{
+
+    AFHTTPSessionManager * manger = [AFHTTPSessionManager manager];
+    NSString * urls = [NSString stringWithFormat:@"http://www.yidianzixun.com/home/q/news_list_for_channel?channel_id=hot&cstart=%ld&cend=%ld&infinite=true&refresh=%@&__from__=wap&appid=web_yidian&_=%@",cstart,cend,refresh,addtime];
+    
+    [manger GET:urls parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"responseObject=%@",responseObject);
+    
+        NSString * status = responseObject[@"status"];
+        
+        NSMutableArray * dataArr = [NSMutableArray new];
+        
+        if ([status isEqualToString:@"success"]) {
+            
+            NSArray * result = [NSArray arrayWithArray:responseObject[@"result"]];
+            
+            if (result.count > 0) {
+                
+                for (NSDictionary * dic in result) {
+                    
+                    ImportArticleModel * model = [[ImportArticleModel alloc]initWithDictionary:dic error:nil];
+                    
+                    NSRange renge = [model.url rangeOfString:@"www.yidianzixun.com"];
+                    
+                    NSRange range = [model.image rangeOfString:@"http"];
+                    
+                    if (renge.length != 0) {
+                        
+                        if(range.length !=0){
+                        
+                            [dataArr addObject:model];
+                        }
+                    }
+                }
+            }
+        }
+        
+        self.yiDiZiXunArticleListBK(status, status, status, dataArr, nil);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error = %@",error);
+    }];
+
+
+}
+
+
+#pragma mark- 一点资讯采集文章
+/**一点资讯采集文章*/
+- (void)YiDianZiXunImportArticelWithTitle:(NSString *)title
+                                    thumb:(NSString *)thumb
+                                      _id:(NSString *)_id{
+
+    AFHTTPSessionManager * manger = [AFHTTPSessionManager manager];
+    manger.requestSerializer = [AFHTTPRequestSerializer serializer];
+    
+    
+    NSString * key = @"9GM6&X3JG%GGfZuH1R0A3";
+    
+    NSDictionary * dict = [[NSUserDefaults standardUserDefaults]objectForKey:@"usermessage"];
+    
+    NSMutableDictionary * dic = [NSMutableDictionary new];
+    dic[@"uid"] = dict[@"uid"];
+    dic[@"thumb"] = thumb;
+    dic[@"title"] = title;
+    dic[@"id"] = _id;
+    
+    
+    NSString * sourceString = [NSString stringWithFormat:@"id=%@&thumb=%@&title=%@&uid=%@&key=%@",_id,thumb,title,dict[@"uid"],key];
+    NSString * md5Code = [MD5Tool MD5ForUpper32Bate:sourceString];
+    
+    dic[@"sign"] = md5Code;
+    
+    
+    NSString * urls = [NSString stringWithFormat:@"%@/App/Yidianzixun/yiDianCai",KURL];
+    [manger POST:urls parameters:dic  constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"code=%@",responseObject[@"code"]);
+        NSLog(@"message=%@",responseObject[@"message"]);
+        NSLog(@"responseObject=%@",responseObject);
+        NSString * code = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
+        NSString * message = [NSString stringWithFormat:@"%@",responseObject[@"message"]];
+        
+        self.importArticleTitleBK(code, message);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        NSLog(@"%@",error);
+        
+    }];
+
+}
 
 
 @end

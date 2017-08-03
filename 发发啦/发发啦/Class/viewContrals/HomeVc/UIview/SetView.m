@@ -7,6 +7,8 @@
 //
 
 #import "SetView.h"
+#import "NetWork.h"
+#import "MBProgressHUD.h"
 
 #define SCREEN_H [UIScreen mainScreen].bounds.size.height
 #define SCREEN_W [UIScreen mainScreen].bounds.size.width
@@ -25,6 +27,8 @@
 @property (nonatomic ,assign)CGFloat Cache;
 @property (nonatomic,strong)UILabel * cacheLabel;
 
+@property (nonatomic,strong)MBProgressHUD * hud;
+@property (nonatomic,strong)NetWork * net;
 @end
 
 @implementation SetView
@@ -88,8 +92,8 @@
 //    NSArray * buttonTitleArray = @[@"账号绑定",@"编辑资料",@"修改登录密码",@"接收系统推送",@"清理缓存",@"去评分",@"关于微转啦",@"隐私保护"];
     
     
-        NSArray * buttonPicArray = @[@"install_set.png",@"install_edit.png",@"install_revise.png",@"system_info.png",@"install_clear.png",@"install_score.png",@"install_about.png",@"install_hide.png"];
-        NSArray * buttonTitleArray = @[@"账号绑定",@"编辑资料",@"修改登录密码",@"我的收藏",@"清理缓存",@"去评分",@"关于微转啦",@"隐私保护"];
+        NSArray * buttonPicArray = @[@"install_set.png",@"install_edit.png",@"install_revise.png",@"system_info.png",@"install_about.png",@"install_clear.png",@"install_score.png",@"install_about.png",@"install_hide.png"];
+        NSArray * buttonTitleArray = @[@"账号绑定",@"编辑资料",@"修改登录密码",@"我的收藏",@"唤醒徒弟",@"清理缓存",@"去评分",@"关于微转啦",@"隐私保护"];
 
     
     
@@ -98,7 +102,7 @@
     self.scrollView.contentSize = CGSizeMake(SCREEN_W, SCREEN_H - 83);
     [self addSubview:_scrollView];
 
-    for (int i = 0; i < 8; i ++) {
+    for (int i = 0; i < 9; i ++) {
         
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setTitle:buttonTitleArray[i] forState:UIControlStateNormal];
@@ -119,7 +123,7 @@
         }else if (i < 6){
             button.frame = CGRectMake(0,30+ (45 + 1) * i, SCREEN_W, 45);
             
-        }else if (i < 8){
+        }else if (i < 9){
             button.frame = CGRectMake(0,45+ (45 + 1) * i, SCREEN_W, 45);
 
         }
@@ -140,9 +144,9 @@
         
         
         
-        if (i == 4 || i == 6) {
+        if (i == 5 || i == 7) {
             
-            if (i == 4) {
+            if (i == 5) {
                 UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMinX(_label.frame) - 160, 8, 150, 30)];
                 label.textAlignment = NSTextAlignmentRight;
                 [button addSubview:label];
@@ -340,11 +344,19 @@
         self.collectionBK();
         
     }else if (button.tag == 1004) {
+        NSLog(@"唤醒徒弟1004");
+    
+    
+    
+        [self awakensTheDisciple];
+    
+    
+    }else if (button.tag == 1005) {
         NSLog(@"1004-清除缓存");
         
         self.clearBlock();
         
-    }else if (button.tag == 1005) {
+    }else if (button.tag == 1006) {
         NSLog(@"1005");
         
 //        跳转商店内应用评论页面
@@ -365,12 +377,12 @@
 //        itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&onlyLatestVersion=true&pageNumber=0&sortOrdering=1&id=xxxxxxxx
 
         
-    }else if (button.tag == 1006) {
+    }else if (button.tag == 1007) {
         NSLog(@"1006-关于微转啦");
         
         self.aboutUs();
         
-    }else if (button.tag == 1007) {
+    }else if (button.tag == 1008) {
         NSLog(@"1007-隐私保护");
         self.toWeb();
     }else if (button.tag == 404) {
@@ -381,6 +393,176 @@
     }
 
 }
+
+
+
+
+
+
+
+
+#pragma mark- 唤醒徒弟
+- (void)awakensTheDisciple{
+    
+    UIView * bgView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    
+    bgView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
+    
+    UIWindow * win = [UIApplication sharedApplication].keyWindow;
+    
+    [win addSubview:bgView];
+    
+    bgView.tag = 212121;
+    
+    [self alertView:bgView];
+}
+
+- (void)alertView:(UIView *)bgView{
+    
+    UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W - 20, SCREEN_H/3)];
+    view.center = CGPointMake(SCREEN_W/2, SCREEN_H/2);
+    [bgView addSubview:view];
+    view.backgroundColor = [UIColor whiteColor];
+    view.layer.cornerRadius = 10;
+    
+    
+    UILabel * title = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, (SCREEN_W-20)/3, SCREEN_H/12)];
+    title.center = CGPointMake(view.frame.size.width/2, SCREEN_H/24);
+    title.text = [NSString stringWithFormat:@"唤醒徒弟"];
+    title.textColor = [UIColor blackColor];
+    title.backgroundColor = [UIColor whiteColor];
+    title.textAlignment = NSTextAlignmentCenter;
+    [view addSubview:title];
+    
+    UIView * line = [[UIView alloc]initWithFrame:CGRectMake(0, SCREEN_H/12, SCREEN_W - 20, 0.5)];
+    line.backgroundColor = [UIColor lightGrayColor];
+    [view addSubview:line];
+    
+    UILabel * detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, CGRectGetMaxY(line.frame), SCREEN_W - 20 -30, SCREEN_H/10)];
+    detailLabel.text = [NSString stringWithFormat:@"微转啦将发送消息帮您唤醒超过7天没登陆的徒弟"];
+    detailLabel.font = [UIFont systemFontOfSize:15];
+    detailLabel.numberOfLines = 2;
+    detailLabel.textAlignment = NSTextAlignmentCenter;
+    [view addSubview:detailLabel];
+    
+    UIButton * cancleButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    cancleButton.frame = CGRectMake(10, SCREEN_H/3 - 15 - SCREEN_H/13, (view.frame.size.width - 30)/2, SCREEN_H/14);
+    [cancleButton setTitle:[NSString stringWithFormat:@"取消"] forState:UIControlStateNormal];
+    [cancleButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    cancleButton.tag = 4404;
+    [view addSubview:cancleButton];
+    cancleButton.layer.borderWidth = 0.5;
+    cancleButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    cancleButton.clipsToBounds = YES;
+    cancleButton.layer.cornerRadius = 10;
+    
+    UIButton * sureButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    sureButton.frame = CGRectMake(20 + (view.frame.size.width - 30)/2, SCREEN_H/3 - 15 - SCREEN_H/13, (view.frame.size.width - 30)/2, SCREEN_H/14);
+    [sureButton setTitle:[NSString stringWithFormat:@"确定"] forState:UIControlStateNormal];
+    sureButton.tag = 5505;
+    [sureButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    //    sureButton.layer.borderWidth = 0.5;
+    //    sureButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    sureButton.clipsToBounds = YES;
+    sureButton.layer.cornerRadius = 10;
+    sureButton.backgroundColor = [UIColor orangeColor];
+    [view addSubview:sureButton];
+    
+    [cancleButton addTarget:self action:@selector(cancleButtonAndSureButton:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [sureButton addTarget:self action:@selector(cancleButtonAndSureButton:) forControlEvents:UIControlEventTouchUpInside];
+    
+}
+
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    [self.hud hideAnimated:YES];
+}
+
+//唤醒徒弟按钮
+- (void)cancleButtonAndSureButton:(UIButton *)bt{
+    
+    
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self animated:YES];
+    hud.removeFromSuperViewOnHide = YES;
+    
+    self.hud = hud;
+    
+    
+    UIWindow * win = [UIApplication sharedApplication].keyWindow;
+    UIView * bgView = (UIView *)[win viewWithTag:212121];
+    
+    if (bt.tag == 5505) {
+        NSLog(@"确定!");
+        
+        if (self.net == nil) {
+            self.net = [[NetWork alloc]init];
+        }
+        
+        [self.net wakeUpTuDi];
+        
+        __weak SetView * weakSelf = self;
+        self.net.tuDiBlock=^(NSString * message){
+            
+            if (message) {
+                
+                [hud hideAnimated:YES];
+                
+                UILabel * aleart = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W/2, SCREEN_W/4)];
+                aleart.center = weakSelf.center;
+                aleart.backgroundColor = [UIColor blackColor];
+                aleart.text = message;
+                aleart.textAlignment = NSTextAlignmentCenter;
+                aleart.textColor =[UIColor whiteColor];
+                aleart.layer.cornerRadius = 10;
+                aleart.clipsToBounds = YES;
+                [weakSelf addSubview:aleart];
+                [UIView animateWithDuration:2.5 animations:^{
+                    
+                    aleart.alpha = 0;
+                }];
+                
+                
+            }else{
+                
+                [hud hideAnimated:YES];
+                
+                UILabel * aleart = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W/2, SCREEN_W/4)];
+                aleart.center = weakSelf.center;
+                aleart.backgroundColor = [UIColor blackColor];
+                aleart.text = @"网络异常";
+                aleart.numberOfLines = 0;
+                aleart.textAlignment = NSTextAlignmentCenter;
+                aleart.textColor =[UIColor whiteColor];
+                aleart.layer.cornerRadius = 10;
+                aleart.clipsToBounds = YES;
+                [weakSelf addSubview:aleart];
+                [UIView animateWithDuration:2.5 animations:^{
+                    
+                    aleart.alpha = 0;
+                }];
+                
+            }
+            
+        };
+        
+        [bgView removeFromSuperview];
+    }else if (bt.tag == 4404){
+        
+        NSLog(@"4404");
+        [bgView removeFromSuperview];
+        
+        [hud hideAnimated:YES];
+    }
+    
+    
+}
+
+
+
+
+
 
 
 @end

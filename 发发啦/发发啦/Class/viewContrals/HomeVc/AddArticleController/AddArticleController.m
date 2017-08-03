@@ -18,6 +18,7 @@
 #import "ImportArticleCell.h"
 #import "MJRefresh.h"
 #import "CYLTableViewPlaceHolder.h"
+#import "YiDianZiXunController.h"
 
 #define SCREEN_H [UIScreen mainScreen].bounds.size.height
 #define SCREEN_W [UIScreen mainScreen].bounds.size.width
@@ -42,6 +43,16 @@
 
 @implementation AddArticleController
 
+
+- (void)viewWillAppear:(BOOL)animated{
+
+    [super viewWillAppear:animated];
+
+    [self.tableView.mj_header beginRefreshing];
+    
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.page = 1;
@@ -50,11 +61,9 @@
     
     [self tableViewConfiguration];
  
-    
-    [self addArticleLink];
 }
 
-#pragma mark- 添加链接
+#pragma mark- 添加采集链接
 - (void)addArticleLink{
 
     NetWork * net = [[NetWork alloc]init];
@@ -66,6 +75,7 @@
         NSLog(@"%@",message);
     };
 }
+
 
 #pragma mark- 获取导入文章的列表
 - (void)importArticleListWithPage:(NSInteger)page andIsRefresh:(BOOL)isRefresh{
@@ -140,7 +150,7 @@
     
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(MJ_LoadMore)];
     
-    [self.tableView.mj_header beginRefreshing];
+//    [self.tableView.mj_header beginRefreshing];
 }
 
 
@@ -179,7 +189,7 @@
 
     wkWebViewController * vc = [[wkWebViewController alloc]init];
     
-    vc.url = @"https://baidu.com";
+    vc.url = @"http://weixin.sogou.com/";
     
     self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
@@ -190,11 +200,10 @@
 
 - (void)weiChatHeadNewsButtonAction{
 
-    wkWebViewController * vc = [[wkWebViewController alloc]init];
-    
-    vc.url = @"https://baidu.com";
+    YiDianZiXunController * vc = [[YiDianZiXunController alloc]init];
     
     self.hidesBottomBarWhenPushed = YES;
+    
     [self.navigationController pushViewController:vc animated:YES];
     
 }
@@ -274,6 +283,8 @@
     vc.id_ = model.article_id;
     vc.thumbimg = model.thumb;
     vc.bigTitle = model.title;
+    vc.urlString = [NSString stringWithFormat:@"http://wz.lgmdl.com/app/article/detail_new?id=%@",model.article_id];
+    vc.share_count = [NSString stringWithFormat:@"%d",arc4random()%1000 + 124];
     
     self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];

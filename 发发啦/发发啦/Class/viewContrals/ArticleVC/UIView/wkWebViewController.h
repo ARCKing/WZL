@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ImportArticleModel.h"
 @interface wkWebViewController : UIViewController
 
 @property (nonatomic,copy)NSString * url;
 
 @property (nonatomic,assign)BOOL isTeach;
+
+@property (nonatomic,assign)BOOL isYiDianZiXun;
+
+
+@property (nonatomic,strong)ImportArticleModel * importArticleModel;
 @end

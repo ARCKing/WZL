@@ -16,5 +16,10 @@
 @property (nonatomic,copy)NSString <Optional> * state;
 @property (nonatomic,copy)NSString <Optional> * addtime;
 
+@property (nonatomic,copy)NSString <Optional> * image;
+@property (nonatomic,copy)NSString <Optional> * url;
+
+@property (nonatomic,copy)NSString <Optional> * date;
+@property (nonatomic,copy)NSString <Optional> * docid;
 
 @end
