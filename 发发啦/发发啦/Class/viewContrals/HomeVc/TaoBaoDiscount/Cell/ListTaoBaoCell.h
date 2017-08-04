@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "TaoBaoDiscountClassifyListModel.h"
 @interface ListTaoBaoCell : UITableViewCell
 
+@property (nonatomic,strong)TaoBaoDiscountClassifyListModel * model;
 @end

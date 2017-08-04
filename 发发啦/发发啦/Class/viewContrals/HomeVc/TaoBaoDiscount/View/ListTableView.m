@@ -12,6 +12,7 @@
 #import "MBProgressHUD.h"
 #import "ImportArticleCell.h"
 #import "ListTaoBaoCell.h"
+#import "TaoBaoDiscountClassifyModel.h"
 
 #define ScreenWith [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
@@ -43,7 +44,8 @@
 
 -(void)drawRect:(CGRect)rect{
 
-
+    [self.tableView.mj_header beginRefreshing];
+    
 }
 
 
@@ -65,13 +67,12 @@
         _tableView.rowHeight = ScreenWith / 4 + 30;
         
         _tableView.tableFooterView = [[UIView alloc]init];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
         _tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(MJ_Refresh)];
         
         _tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(MJ_LoadMore)];
-    
-        [_tableView.mj_header beginRefreshing];
-    
+        
     }
     return _tableView;
 }
@@ -83,7 +84,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return self.dataArray.count + 10;
+    return self.dataArray.count;
 }
 
 
@@ -95,15 +96,28 @@
     if (cell == nil) {
         
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ListTaoBaoCell" owner:self options:nil]firstObject];
+    
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
+    TaoBaoDiscountClassifyListModel * model = self.dataArray[indexPath.row];
+    cell.model = model;
     return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    NSLog(@"didSelect");
+    
+    TaoBaoDiscountClassifyListModel * model = self.dataArray[indexPath.row];
+    
+    self.iteamDidSelectBK(model);
+    
+    NSLog(@"%@",model);
+    
 }
 
 
@@ -113,6 +127,7 @@
     
     self.page = 0;
     
+    [self getListFromNetWithPage:0 andName:[self._id integerValue] isRefresh:YES];
 }
 
 
@@ -121,7 +136,35 @@
     
     self.page +=1 ;
     
+    [self getListFromNetWithPage:self.page andName:[self._id integerValue] isRefresh:NO];
+    
 }
+
+
+- (void)getListFromNetWithPage:(NSInteger)page andName:(NSInteger)_id isRefresh:(BOOL)isRefresh{
+    
+    WEAK_SELF;
+    [self.net getTaoBaoDiscountChannelClassifyListWithCat:_id andPage:page];
+    
+    self.net.taoBaoDiscountChannelClassifyListBk = ^(NSString * code, NSString *mesage, NSString *str, NSArray * dataArray, NSArray *array) {
+
+        
+        if (isRefresh) {
+            weakSelf.dataArray = [NSMutableArray arrayWithArray:dataArray];
+
+        }else{
+
+            [weakSelf.dataArray addObjectsFromArray:dataArray];
+        
+        }
+        
+        [weakSelf.tableView.mj_header endRefreshing];
+        [weakSelf.tableView.mj_footer endRefreshing];
+        [weakSelf.tableView cyl_reloadData];
+        
+    };
+}
+
 
 
 - (NetWork *)net{

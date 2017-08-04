@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "NetWork.h"
+#import "TaoBaoDiscountClassifyListModel.h"
 
-typedef void (^ListTableViewIteamDidSelectBlock)(NSObject *);
+typedef void (^ListTableViewIteamDidSelectBlock)(TaoBaoDiscountClassifyListModel *);
+
 
 @interface ListTableView : UIView
 
@@ -20,5 +22,7 @@ typedef void (^ListTableViewIteamDidSelectBlock)(NSObject *);
 @property (nonatomic,strong)UITableView * tableView;
 
 @property (nonatomic,strong)NSMutableArray * dataArray;
+
+@property (nonatomic,copy)NSString * _id;
 
 @end

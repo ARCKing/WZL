@@ -180,6 +180,9 @@
 		A98634061D6AFD910092E855 /* withdraw_icon_zhifubao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A98634041D6AFD910092E855 /* withdraw_icon_zhifubao@2x.png */; };
 		A98634071D6AFD910092E855 /* withdraw_icon_zhifubao@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A98634051D6AFD910092E855 /* withdraw_icon_zhifubao@3x.png */; };
 		A98A2C371F3408530009B989 /* TaoBaoDiscountController.m in Sources */ = {isa = PBXBuildFile; fileRef = A98A2C361F3408530009B989 /* TaoBaoDiscountController.m */; };
+		A98A2C3A1F341B3A0009B989 /* ChannelScrollerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A98A2C391F341B3A0009B989 /* ChannelScrollerView.m */; };
+		A98A2C3D1F344A380009B989 /* TaoBaoDiscountClassifyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A98A2C3C1F344A380009B989 /* TaoBaoDiscountClassifyModel.m */; };
+		A98A2C401F344A530009B989 /* TaoBaoDiscountClassifyListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A98A2C3F1F344A530009B989 /* TaoBaoDiscountClassifyListModel.m */; };
 		A98A707A1D68035500F7C250 /* 2-13010H22T7-50.png in Resources */ = {isa = PBXBuildFile; fileRef = A98A70791D68035500F7C250 /* 2-13010H22T7-50.png */; };
 		A98A707D1D680A7900F7C250 /* ArticalView.m in Sources */ = {isa = PBXBuildFile; fileRef = A98A707C1D680A7900F7C250 /* ArticalView.m */; };
 		A98BE3841D79230000E7F3E7 /* GrabDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A98BE3831D79230000E7F3E7 /* GrabDetailViewController.m */; };
@@ -739,6 +742,12 @@
 		A98634051D6AFD910092E855 /* withdraw_icon_zhifubao@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "withdraw_icon_zhifubao@3x.png"; sourceTree = "<group>"; };
 		A98A2C351F3408530009B989 /* TaoBaoDiscountController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaoBaoDiscountController.h; sourceTree = "<group>"; };
 		A98A2C361F3408530009B989 /* TaoBaoDiscountController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaoBaoDiscountController.m; sourceTree = "<group>"; };
+		A98A2C381F341B3A0009B989 /* ChannelScrollerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelScrollerView.h; sourceTree = "<group>"; };
+		A98A2C391F341B3A0009B989 /* ChannelScrollerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelScrollerView.m; sourceTree = "<group>"; };
+		A98A2C3B1F344A380009B989 /* TaoBaoDiscountClassifyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaoBaoDiscountClassifyModel.h; sourceTree = "<group>"; };
+		A98A2C3C1F344A380009B989 /* TaoBaoDiscountClassifyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaoBaoDiscountClassifyModel.m; sourceTree = "<group>"; };
+		A98A2C3E1F344A530009B989 /* TaoBaoDiscountClassifyListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaoBaoDiscountClassifyListModel.h; sourceTree = "<group>"; };
+		A98A2C3F1F344A530009B989 /* TaoBaoDiscountClassifyListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaoBaoDiscountClassifyListModel.m; sourceTree = "<group>"; };
 		A98A70791D68035500F7C250 /* 2-13010H22T7-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2-13010H22T7-50.png"; sourceTree = "<group>"; };
 		A98A707B1D680A7900F7C250 /* ArticalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticalView.h; sourceTree = "<group>"; };
 		A98A707C1D680A7900F7C250 /* ArticalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticalView.m; sourceTree = "<group>"; };
@@ -1510,6 +1519,10 @@
 		A981066F1F331BB60026123F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A98A2C3B1F344A380009B989 /* TaoBaoDiscountClassifyModel.h */,
+				A98A2C3C1F344A380009B989 /* TaoBaoDiscountClassifyModel.m */,
+				A98A2C3E1F344A530009B989 /* TaoBaoDiscountClassifyListModel.h */,
+				A98A2C3F1F344A530009B989 /* TaoBaoDiscountClassifyListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1519,6 +1532,8 @@
 			children = (
 				A98106731F331DBD0026123F /* ListTableView.h */,
 				A98106741F331DBD0026123F /* ListTableView.m */,
+				A98A2C381F341B3A0009B989 /* ChannelScrollerView.h */,
+				A98A2C391F341B3A0009B989 /* ChannelScrollerView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2906,6 +2921,7 @@
 				A98D4FAF1F30748E0076AA8E /* JSONModelClassProperty.m in Sources */,
 				A9A7EFCE1DB461EF00A88E10 /* UIImageView+WebCache.m in Sources */,
 				A9A9DB0A1D713E0100D0FB50 /* RankCellTableViewCell.m in Sources */,
+				A98A2C3A1F341B3A0009B989 /* ChannelScrollerView.m in Sources */,
 				A95331931DCB514B00A561C3 /* MJRefreshAutoNormalFooter.m in Sources */,
 				A9C615BD1DDAAC95006D1CA7 /* QQgrooupModel.m in Sources */,
 				A98D4FB11F30748E0076AA8E /* JSONAPI.m in Sources */,
@@ -2934,10 +2950,12 @@
 				A98403E61D61AA870078C52B /* TabViewController.m in Sources */,
 				A98F92EA1D70306E00A7137B /* SearchViewController.m in Sources */,
 				A981067E1F3323790026123F /* ListTaoBaoCell.m in Sources */,
+				A98A2C3D1F344A380009B989 /* TaoBaoDiscountClassifyModel.m in Sources */,
 				A94A4AC41D6D84B800755160 /* AFURLSessionManager.m in Sources */,
 				A968F5AB1DD1C36D00181C36 /* dayTaskModel.m in Sources */,
 				A9AFBE021DD00B6E00964A86 /* UMSocialUIManager.m in Sources */,
 				A98D4FB81F30755C0076AA8E /* ImportArticleModel.m in Sources */,
+				A98A2C401F344A530009B989 /* TaoBaoDiscountClassifyListModel.m in Sources */,
 				A9C3306B1F1C5941004C44A5 /* AddArticleController.m in Sources */,
 				A9A7EFCD1DB461EF00A88E10 /* UIImageView+HighlightedWebCache.m in Sources */,
 				A9BB9CA81F31667C00A0A440 /* UITableView+CYLTableViewPlaceHolder.m in Sources */,

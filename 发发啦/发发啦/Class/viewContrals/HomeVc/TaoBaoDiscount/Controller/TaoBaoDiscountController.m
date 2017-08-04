@@ -8,14 +8,30 @@
 
 #import "TaoBaoDiscountController.h"
 #import "ListTableView.h"
+#import "ChannelScrollerView.h"
+#import "NetWork.h"
+#import "TaoBaoDiscountClassifyModel.h"
+#import "TaoBaoDiscountClassifyListModel.h"
+
 #define ScreenWith [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
 
 #define WEAK_SELF __typeof(self) __weak weakSelf = self
 
-@interface TaoBaoDiscountController ()
+@interface TaoBaoDiscountController ()<UIScrollViewDelegate>
 
 @property (nonatomic,strong)UIView * navView;
+@property (nonatomic,strong)ChannelScrollerView * channelView;
+
+@property (nonatomic,strong)UIScrollView * scrollView;
+
+@property (nonatomic,strong)NSArray * channelClassifyArray;
+
+@property (nonatomic,assign)NSInteger page;
+
+@property (nonatomic,strong)NetWork * net;
+
+@property (nonatomic,strong)ListTableView * currentTableView;
 
 @end
 
@@ -24,12 +40,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.navView];
     
-    ListTableView * view = [[ListTableView alloc]initWithFrame:CGRectMake(0, 64, ScreenWith, ScreenHeight - 64)];
     
-    [self.view addSubview:view];
+    [self.navView addSubview:self.channelView];
     
+
 }
 
 
@@ -50,8 +68,152 @@
     return _navView;
 }
 
+
+- (ChannelScrollerView *)channelView{
+    if (!_channelView) {
+        
+        WEAK_SELF;
+        _channelView = [[ChannelScrollerView alloc]initWithFrame:CGRectMake(65, 20, ScreenWith - 75, 44)];
+        _channelView.backgroundColor = [UIColor clearColor];
+        
+        _channelView.channelClassifyBK = ^(NSArray * array) {
+            
+            weakSelf.channelClassifyArray = array;
+            
+            [weakSelf.view addSubview:weakSelf.scrollView];
+        };
+        
+        
+        _channelView.currentPageBK = ^(NSInteger currentPage) {
+            
+            [weakSelf.scrollView setContentOffset:CGPointMake(ScreenWith * currentPage, 0) animated:YES];
+            
+        };
+        
+        
+    }
+    
+    return _channelView;
+}
+
+
 - (void)popBackAction{
 
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (UIScrollView *)scrollView{
+
+    if (!_scrollView) {
+        
+        _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 64, ScreenWith,ScreenHeight - 64)];
+        _scrollView.pagingEnabled = YES;
+        _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.bounces = NO;
+        _scrollView.contentSize = CGSizeMake(ScreenWith * self.channelClassifyArray.count, 0);
+        _scrollView.tag = 2200;
+        _scrollView.backgroundColor = [UIColor whiteColor];
+        _scrollView.delegate = self;
+        [self addTableViewWithPage:0];
+        
+    }
+    return _scrollView;
+}
+
+
+#pragma mark- 翻页加载
+
+- (void)addTableViewWithPage:(NSInteger)page{
+
+    ListTableView * listTableView = (ListTableView *)[self.scrollView viewWithTag:11220 + page];
+    
+    if (!listTableView) {
+        
+        ListTableView * view = [[ListTableView alloc]initWithFrame:CGRectMake(page * ScreenWith,0, ScreenWith, ScreenHeight - 64)];
+        view.tag = 11220 + page;
+        
+        TaoBaoDiscountClassifyModel * model = self.channelClassifyArray[page];
+        view._id = model._id;
+        
+        [self.scrollView addSubview:view];
+        
+        if (page == 0) {
+            
+            self.currentTableView = view;
+        }
+        
+        
+        WEAK_SELF;
+        
+        view.iteamDidSelectBK = ^(TaoBaoDiscountClassifyListModel * model) {
+            
+            
+            
+        };
+        
+        
+    }
+}
+
+
+- (void)changChannelSelectWithPage:(NSInteger)page{
+
+
+    for (UIButton * bt in self.channelView.btArray) {
+        
+        if (bt.tag == page + 1100) {
+            
+            [bt setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            
+            bt.titleLabel.font = [UIFont systemFontOfSize:21];
+            
+        }else{
+            
+            [bt setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            bt.titleLabel.font = [UIFont systemFontOfSize:17];
+            
+        }
+        
+        
+    }
+
+
+
+}
+
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+
+    NSInteger page = scrollView.contentOffset.x/ScreenWith;
+
+    if (scrollView.tag == 2200) {
+                
+        [self addTableViewWithPage:page];
+    }
+
+    [self changChannelSelectWithPage:page];
+    
+}
+
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+
+
+    NSInteger page = scrollView.contentOffset.x/ScreenWith;
+    
+    if (scrollView.tag == 2200) {
+        
+        [self addTableViewWithPage:page];
+    }
+    
+    
+}
+
+- (NetWork *)net{
+    if (!_net) {
+        
+        _net = [[NetWork alloc]init];
+    }
+    return _net;
 }
 @end

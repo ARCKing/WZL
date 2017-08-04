@@ -30,6 +30,9 @@
 #import "JSONModel.h"
 #import "ImportArticleModel.h"
 #import "MD5Tool.h"
+#import "TaoBaoDiscountClassifyModel.h"
+#import "TaoBaoDiscountClassifyListModel.h"
+
 #define KURL @"http://wz.lgmdl.com"
 
 @interface NetWork ()
@@ -3213,6 +3216,78 @@
         
         NSLog(@"%@",error);
         
+    }];
+
+}
+
+
+#pragma mark- 淘宝折扣分类
+/**淘宝折扣分类*/
+- (void)getTaoBaoDiscountChannelClassify{
+
+    AFHTTPSessionManager * manger = [AFHTTPSessionManager manager];
+    NSString * urls = @"https://mmy.gxlyf.cn/api/get-tao-cat";
+    
+    [manger GET:urls parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"responseObject=%@",responseObject);
+       
+        NSArray * array = responseObject;
+        
+        NSMutableArray * dataArr = [NSMutableArray new];
+        
+        if (array.count >0) {
+            
+            for (NSDictionary * dic in array) {
+                TaoBaoDiscountClassifyModel * model = [[TaoBaoDiscountClassifyModel alloc]initWithDictionary:dic error:nil];
+                
+                [dataArr addObject:model];
+            }
+        }
+        
+        self.taoBaoDiscountChannelClassifyBK(nil, nil, nil, dataArr, nil);
+        
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error = %@",error);
+    }];
+
+}
+
+
+#pragma mark- 淘宝折扣分类列表
+/**淘宝折扣分类列表*/
+- (void)getTaoBaoDiscountChannelClassifyListWithCat:(NSUInteger)cat andPage:(NSInteger)page{
+
+    AFHTTPSessionManager * manger = [AFHTTPSessionManager manager];
+    NSString * urls = [NSString stringWithFormat:@"https://mmy.gxlyf.cn/api/get-tao-list?cat=%ld&page=%ld",cat,page];
+    
+    
+    [manger GET:urls parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"responseObject=%@",responseObject);
+        
+        NSArray * array = responseObject[@"data"];
+        NSMutableArray * dataArr = [NSMutableArray new];
+        
+        if (array.count > 0) {
+            
+            for (NSDictionary * dict in array) {
+                
+                TaoBaoDiscountClassifyListModel * model = [[TaoBaoDiscountClassifyListModel alloc]initWithDictionary:dict error:nil];
+                
+                [dataArr addObject:model];
+            }
+        }
+    
+        self.taoBaoDiscountChannelClassifyListBk(nil, nil, nil, dataArr, nil);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error = %@",error);
     }];
 
 }
