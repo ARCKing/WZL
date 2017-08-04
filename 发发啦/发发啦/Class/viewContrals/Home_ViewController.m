@@ -28,7 +28,7 @@
 #import "ResetCodeViewController.h"
 #import "EditProfileViewController.h"
 #import "AddArticleController.h"
-
+#import "TaoBaoDiscountController.h"
 #import "wkWebViewController.h"
 #import "WeiXinAndAliPayWithDrawVC.h"
 #import <UMMobClick/MobClick.h>
@@ -1763,6 +1763,12 @@
             
                 NSLog(@"超级折扣");
             
+                TaoBaoDiscountController * vc = [[TaoBaoDiscountController alloc]init];
+                
+                self.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:vc animated:YES];
+                self.hidesBottomBarWhenPushed = NO;
+                
 //                [self awakensTheDisciple];
             }
         }else{

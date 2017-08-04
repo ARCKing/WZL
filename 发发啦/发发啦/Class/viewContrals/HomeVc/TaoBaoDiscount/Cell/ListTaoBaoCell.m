@@ -8,6 +8,18 @@
 
 #import "ListTaoBaoCell.h"
 
+@interface ListTaoBaoCell()
+
+@property (weak, nonatomic) IBOutlet UILabel *headTitle;
+
+@property (weak, nonatomic) IBOutlet UILabel *skyCat;
+
+@property (weak, nonatomic) IBOutlet UILabel *sellCount;
+@property (weak, nonatomic) IBOutlet UILabel *money;
+@property (weak, nonatomic) IBOutlet UILabel *discount;
+
+@end
+
 @implementation ListTaoBaoCell
 
 - (void)awakeFromNib {

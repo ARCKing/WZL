@@ -11,6 +11,7 @@
 #import "MJRefresh.h"
 #import "MBProgressHUD.h"
 #import "ImportArticleCell.h"
+#import "ListTaoBaoCell.h"
 
 #define ScreenWith [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
@@ -29,7 +30,10 @@
 
     if (self = [super initWithFrame:frame]) {
         
-        [self addSubview:self.tableView];
+        self.backgroundColor = [UIColor whiteColor];
+        
+        
+        [self addUI];
     }
 
     return self;
@@ -43,7 +47,14 @@
 }
 
 
-- (UITableView *)tableview{
+- (void)addUI{
+
+    [self addSubview:self.tableView];
+
+}
+
+
+- (UITableView *)tableView{
     
     if (!_tableView) {
         
@@ -51,7 +62,7 @@
         
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        _tableView.rowHeight = ScreenWith / 4 + 20;
+        _tableView.rowHeight = ScreenWith / 4 + 30;
         
         _tableView.tableFooterView = [[UIView alloc]init];
         
@@ -72,18 +83,18 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return self.dataArray.count;
+    return self.dataArray.count + 10;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    ImportArticleCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    ListTaoBaoCell * cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     if (cell == nil) {
         
-        cell = [[[NSBundle mainBundle] loadNibNamed:@"ImportArticleCell" owner:self options:nil]firstObject];
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"ListTaoBaoCell" owner:self options:nil]firstObject];
     }
     
     return cell;
