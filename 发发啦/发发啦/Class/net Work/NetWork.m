@@ -3293,4 +3293,39 @@
 }
 
 
+
+#pragma mark- 淘宝折扣详情页数据
+/**淘宝折扣详情页数据*/
+- (void)getTaoBaoDiscountListDetailDataWithID:(NSString *)_id{
+
+    AFHTTPSessionManager * manger = [AFHTTPSessionManager manager];
+    NSString * urls = [NSString stringWithFormat:@"https://mmy.gxlyf.cn/api/get-tao-info?id=%@",_id];
+    
+    
+    [manger GET:urls parameters:nil progress:^(NSProgress * _Nonnull downloadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"responseObject=%@",responseObject);
+        
+        NSDictionary * dicData = responseObject[@"data"];
+        NSMutableArray * dataArr = [NSMutableArray new];
+        
+        TaoBaoDiscountClassifyListModel * model = [[TaoBaoDiscountClassifyListModel alloc]initWithDictionary:dicData error:nil];
+        
+        if (model) {
+            
+            model.imagArr = model.small_images[@"string"];
+            
+            [dataArr addObject:model];
+        }
+        
+        self.taoBaoDiscountListDetailBk(nil, nil, nil, dataArr, nil);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error = %@",error);
+    }];
+
+}
+
 @end

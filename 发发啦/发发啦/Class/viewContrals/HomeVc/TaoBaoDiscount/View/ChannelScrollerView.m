@@ -53,7 +53,7 @@
 
     if (!_scrollView) {
         
-        _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWith - 75, 44)];
+        _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, ScreenWith - ScreenWith/10, 44)];
         _scrollView.pagingEnabled = NO;
         _scrollView.contentSize = CGSizeMake(bt_with * self.channelClassifyArray.count, 0);
         _scrollView.showsHorizontalScrollIndicator = NO;
@@ -135,9 +135,28 @@
 /**改变栏目位置*/
 - (void)changeChannelScrollViewContOfSetWithPage:(NSInteger)page{
 
+    NSInteger count = self.channelClassifyArray.count;
     
+    if (page > 2 && self.channelClassifyArray.count > 5) {
+        
+        if (page*bt_with >= (self.channelClassifyArray.count -3)*bt_with) {
+            
+            CGFloat allLong = self.channelClassifyArray.count * bt_with;
+
+            
+            
+            [self.scrollView setContentOffset:CGPointMake(bt_with * (page-2) - bt_with*(3 - (count - page)) - bt_with/2, 0) animated:YES];
+
+        }else{
+            
+            [self.scrollView setContentOffset:CGPointMake(bt_with * (page-2), 0) animated:YES];
+
+        }
+    }else{
+        
         [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
-   
+
+    }
     
 }
 

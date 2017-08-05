@@ -13,11 +13,17 @@
 		A909B0A51DE30EA700D0091B /* libc.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A909B0A41DE30EA700D0091B /* libc.tbd */; };
 		A91B3A541DD5AB17004C0452 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A91B3A531DD5AB17004C0452 /* MBProgressHUD.m */; };
 		A91B3A571DD5BD88004C0452 /* luckModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A91B3A561DD5BD88004C0452 /* luckModel.m */; };
+		A935F8F01F3559DD002E7C33 /* TaoBaoDiscountImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A935F8EF1F3559DD002E7C33 /* TaoBaoDiscountImageModel.m */; };
 		A939D8931DAA4AAB00935EAB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A939D8921DAA4AAB00935EAB /* MapKit.framework */; };
 		A93B54C91DF7FD6C0023B8EA /* UserMessage+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A93B54C61DF7FD6C0023B8EA /* UserMessage+CoreDataClass.m */; };
 		A93B54CA1DF7FD6C0023B8EA /* UserMessage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A93B54C81DF7FD6C0023B8EA /* UserMessage+CoreDataProperties.m */; };
 		A9413EC01DF2646D00388060 /* ArticleMessage+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = A9413EBD1DF2646D00388060 /* ArticleMessage+CoreDataClass.m */; };
 		A9413EC11DF2646D00388060 /* ArticleMessage+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A9413EBF1DF2646D00388060 /* ArticleMessage+CoreDataProperties.m */; };
+		A94176F11F3564120029FD8E /* TaoBaoListDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A94176EF1F3564120029FD8E /* TaoBaoListDetailCell.m */; };
+		A94176F21F3564120029FD8E /* TaoBaoListDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A94176F01F3564120029FD8E /* TaoBaoListDetailCell.xib */; };
+		A94177001F3564D50029FD8E /* TaoBaoIteamDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = A94176FE1F3564D50029FD8E /* TaoBaoIteamDetailController.m */; };
+		A94177011F3564D50029FD8E /* TaoBaoIteamDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A94176FF1F3564D50029FD8E /* TaoBaoIteamDetailController.xib */; };
+		A94177041F3579D40029FD8E /* HeadScrolADlView.m in Sources */ = {isa = PBXBuildFile; fileRef = A94177031F3579D40029FD8E /* HeadScrolADlView.m */; };
 		A944E1E21D75183000900DCB /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A944E1E11D75183000900DCB /* EditProfileViewController.m */; };
 		A944E1E51D755F9800900DCB /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A944E1E41D755F9800900DCB /* EditViewController.m */; };
 		A9455A461DC8967D00012D27 /* group_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9455A441DC8967D00012D27 /* group_refresh@2x.png */; };
@@ -496,6 +502,8 @@
 		A91B3A531DD5AB17004C0452 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		A91B3A551DD5BD88004C0452 /* luckModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = luckModel.h; sourceTree = "<group>"; };
 		A91B3A561DD5BD88004C0452 /* luckModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = luckModel.m; sourceTree = "<group>"; };
+		A935F8EE1F3559DD002E7C33 /* TaoBaoDiscountImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaoBaoDiscountImageModel.h; sourceTree = "<group>"; };
+		A935F8EF1F3559DD002E7C33 /* TaoBaoDiscountImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaoBaoDiscountImageModel.m; sourceTree = "<group>"; };
 		A939D8921DAA4AAB00935EAB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A939D8941DAA4AAE00935EAB /* 发发啦.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "发发啦.entitlements"; sourceTree = "<group>"; };
 		A93B54C51DF7FD6C0023B8EA /* UserMessage+CoreDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UserMessage+CoreDataClass.h"; sourceTree = "<group>"; };
@@ -506,6 +514,14 @@
 		A9413EBD1DF2646D00388060 /* ArticleMessage+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ArticleMessage+CoreDataClass.m"; sourceTree = "<group>"; };
 		A9413EBE1DF2646D00388060 /* ArticleMessage+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ArticleMessage+CoreDataProperties.h"; sourceTree = "<group>"; };
 		A9413EBF1DF2646D00388060 /* ArticleMessage+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ArticleMessage+CoreDataProperties.m"; sourceTree = "<group>"; };
+		A94176EE1F3564120029FD8E /* TaoBaoListDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaoBaoListDetailCell.h; sourceTree = "<group>"; };
+		A94176EF1F3564120029FD8E /* TaoBaoListDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaoBaoListDetailCell.m; sourceTree = "<group>"; };
+		A94176F01F3564120029FD8E /* TaoBaoListDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaoBaoListDetailCell.xib; sourceTree = "<group>"; };
+		A94176FD1F3564D50029FD8E /* TaoBaoIteamDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaoBaoIteamDetailController.h; sourceTree = "<group>"; };
+		A94176FE1F3564D50029FD8E /* TaoBaoIteamDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaoBaoIteamDetailController.m; sourceTree = "<group>"; };
+		A94176FF1F3564D50029FD8E /* TaoBaoIteamDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaoBaoIteamDetailController.xib; sourceTree = "<group>"; };
+		A94177021F3579D40029FD8E /* HeadScrolADlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadScrolADlView.h; sourceTree = "<group>"; };
+		A94177031F3579D40029FD8E /* HeadScrolADlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadScrolADlView.m; sourceTree = "<group>"; };
 		A944E1E01D75183000900DCB /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
 		A944E1E11D75183000900DCB /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		A944E1E31D755F9800900DCB /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
@@ -1503,6 +1519,9 @@
 				A981067B1F3323790026123F /* ListTaoBaoCell.h */,
 				A981067C1F3323790026123F /* ListTaoBaoCell.m */,
 				A981067D1F3323790026123F /* ListTaoBaoCell.xib */,
+				A94176EE1F3564120029FD8E /* TaoBaoListDetailCell.h */,
+				A94176EF1F3564120029FD8E /* TaoBaoListDetailCell.m */,
+				A94176F01F3564120029FD8E /* TaoBaoListDetailCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1512,6 +1531,9 @@
 			children = (
 				A98A2C351F3408530009B989 /* TaoBaoDiscountController.h */,
 				A98A2C361F3408530009B989 /* TaoBaoDiscountController.m */,
+				A94176FD1F3564D50029FD8E /* TaoBaoIteamDetailController.h */,
+				A94176FE1F3564D50029FD8E /* TaoBaoIteamDetailController.m */,
+				A94176FF1F3564D50029FD8E /* TaoBaoIteamDetailController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1523,6 +1545,8 @@
 				A98A2C3C1F344A380009B989 /* TaoBaoDiscountClassifyModel.m */,
 				A98A2C3E1F344A530009B989 /* TaoBaoDiscountClassifyListModel.h */,
 				A98A2C3F1F344A530009B989 /* TaoBaoDiscountClassifyListModel.m */,
+				A935F8EE1F3559DD002E7C33 /* TaoBaoDiscountImageModel.h */,
+				A935F8EF1F3559DD002E7C33 /* TaoBaoDiscountImageModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1534,6 +1558,8 @@
 				A98106741F331DBD0026123F /* ListTableView.m */,
 				A98A2C381F341B3A0009B989 /* ChannelScrollerView.h */,
 				A98A2C391F341B3A0009B989 /* ChannelScrollerView.m */,
+				A94177021F3579D40029FD8E /* HeadScrolADlView.h */,
+				A94177031F3579D40029FD8E /* HeadScrolADlView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2662,6 +2688,7 @@
 				A9AFBDFB1DD00B6E00964A86 /* UMSocialLocalizable.strings in Resources */,
 				A94687B31EC19AC4003D8B3A /* star_usel@3x.png in Resources */,
 				A984040D1D61CA350078C52B /* recruit_week@3x.png in Resources */,
+				A94176F21F3564120029FD8E /* TaoBaoListDetailCell.xib in Resources */,
 				A955469D1DF69F2500E2331E /* home_adv_close@3x.png in Resources */,
 				A9CE06451D9E59B900FE2DB9 /* loading6@3x.png in Resources */,
 				A94687A11EC17243003D8B3A /* gywm@3x.png in Resources */,
@@ -2838,6 +2865,7 @@
 				A9C615C41DDAFCC1006D1CA7 /* xinshou_02.jpg in Resources */,
 				A953319B1DCB514B00A561C3 /* MJRefresh.bundle in Resources */,
 				A993E0561DBB047A003A18B7 /* girl.png in Resources */,
+				A94177011F3564D50029FD8E /* TaoBaoIteamDetailController.xib in Resources */,
 				A9C7D4FC1DC1975400295F36 /* tip_bg_star@3x.png in Resources */,
 				A94687B21EC19AC4003D8B3A /* star_usel@2x.png in Resources */,
 				A98403C01D6183AF0078C52B /* Main.storyboard in Resources */,
@@ -2887,6 +2915,7 @@
 				A9AF194F1D65539E006FBAAD /* ResetCodeViewController.m in Sources */,
 				A9AF19801D65917F006FBAAD /* NewComerView.m in Sources */,
 				A9E202601D87A44700376881 /* dayPupilView.m in Sources */,
+				A94176F11F3564120029FD8E /* TaoBaoListDetailCell.m in Sources */,
 				A98F92971D6FD25800A7137B /* inComeDetailCell.m in Sources */,
 				A94A4AC31D6D84B800755160 /* AFURLResponseSerialization.m in Sources */,
 				A9CF8EC91DB9BEE200689373 /* typeTwoCell.m in Sources */,
@@ -2914,11 +2943,13 @@
 				A953319F1DCB514B00A561C3 /* UIScrollView+MJRefresh.m in Sources */,
 				A9E202631D87A45500376881 /* weekPupilView.m in Sources */,
 				A93B54CA1DF7FD6C0023B8EA /* UserMessage+CoreDataProperties.m in Sources */,
+				A935F8F01F3559DD002E7C33 /* TaoBaoDiscountImageModel.m in Sources */,
 				A9AF19B81D65AF2C006FBAAD /* InComeRanKCell.m in Sources */,
 				A94A4ACD1D6D84B800755160 /* UIWebView+AFNetworking.m in Sources */,
 				A953318D1DCB514B00A561C3 /* MJRefreshAutoFooter.m in Sources */,
 				A99E1B601D640973005C9C2A /* ContactUsView.m in Sources */,
 				A98D4FAF1F30748E0076AA8E /* JSONModelClassProperty.m in Sources */,
+				A94177001F3564D50029FD8E /* TaoBaoIteamDetailController.m in Sources */,
 				A9A7EFCE1DB461EF00A88E10 /* UIImageView+WebCache.m in Sources */,
 				A9A9DB0A1D713E0100D0FB50 /* RankCellTableViewCell.m in Sources */,
 				A98A2C3A1F341B3A0009B989 /* ChannelScrollerView.m in Sources */,
@@ -2985,6 +3016,7 @@
 				A94703E71D864FAF00D2EB96 /* GrabRedCashLuckVC.m in Sources */,
 				A996A05C1D77BC660045025F /* UserInfos.m in Sources */,
 				A9D6E3701DB6150C00A950E9 /* typeOneCell.m in Sources */,
+				A94177041F3579D40029FD8E /* HeadScrolADlView.m in Sources */,
 				A98403BA1D6183AF0078C52B /* AppDelegate.m in Sources */,
 				A9A7EFC91DB461EF00A88E10 /* SDWebImagePrefetcher.m in Sources */,
 				A98D4FB41F30748E0076AA8E /* JSONKeyMapper.m in Sources */,

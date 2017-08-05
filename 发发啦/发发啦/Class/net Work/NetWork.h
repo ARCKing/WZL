@@ -84,6 +84,8 @@ typedef void(^activityNoticeBlock) (NSString * ,NSString * ,NSString *);
 
 @interface NetWork : NSObject
 
+/**淘宝折扣详情页*/
+@property(nonatomic,copy)DataFromNetComeBackBolck taoBaoDiscountListDetailBk;
 
 /**淘宝折扣分类*/
 @property(nonatomic,copy)DataFromNetComeBackBolck taoBaoDiscountChannelClassifyBK;
@@ -431,5 +433,9 @@ typedef void(^activityNoticeBlock) (NSString * ,NSString * ,NSString *);
 #pragma mark- 淘宝折扣分类列表
 /**淘宝折扣分类列表*/
 - (void)getTaoBaoDiscountChannelClassifyListWithCat:(NSUInteger)cat andPage:(NSInteger)page;
+
+#pragma mark- 淘宝折扣详情页数据
+/**淘宝折扣详情页数据*/
+- (void)getTaoBaoDiscountListDetailDataWithID:(NSString *)_id;
 
 @end

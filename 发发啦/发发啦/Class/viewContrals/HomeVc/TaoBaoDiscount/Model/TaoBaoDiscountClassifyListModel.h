@@ -9,7 +9,6 @@
 #import "JSONModel.h"
 
 @interface TaoBaoDiscountClassifyListModel : JSONModel
-
 @property(nonatomic,strong)NSString<Optional>* _id;
 @property(nonatomic,strong)NSString<Optional>* itemid;
 @property(nonatomic,strong)NSString<Optional>* itemtitle;
@@ -25,4 +24,8 @@
 @property(nonatomic,strong)NSString<Optional>* guide_article;
 @property(nonatomic,strong)NSString<Optional>* fqcat;
 @property(nonatomic,strong)NSString<Optional>* taokouling;
+
+@property(nonatomic,strong)NSDictionary<Optional>* small_images;
+
+@property(nonatomic,strong)NSArray<Optional>* imagArr;
 @end

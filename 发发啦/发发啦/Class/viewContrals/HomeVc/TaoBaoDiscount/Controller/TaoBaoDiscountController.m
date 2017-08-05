@@ -12,6 +12,8 @@
 #import "NetWork.h"
 #import "TaoBaoDiscountClassifyModel.h"
 #import "TaoBaoDiscountClassifyListModel.h"
+#import "TaoBaoListDetailCell.h"
+#import "TaoBaoIteamDetailController.h"
 
 #define ScreenWith [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
@@ -58,7 +60,7 @@
         _navView.backgroundColor = [UIColor orangeColor];
         
         UIButton * bt = [UIButton buttonWithType:UIButtonTypeCustom];
-        bt.frame = CGRectMake(5, 20, 60, 44);
+        bt.frame = CGRectMake(5, 20, ScreenWith/8, 44);
         [bt setImage:[UIImage imageNamed:@"comm_icon_back_white"] forState:UIControlStateNormal];
         [bt addTarget:self action:@selector(popBackAction) forControlEvents:UIControlEventTouchUpInside];
         bt.imageEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 0);
@@ -73,7 +75,7 @@
     if (!_channelView) {
         
         WEAK_SELF;
-        _channelView = [[ChannelScrollerView alloc]initWithFrame:CGRectMake(65, 20, ScreenWith - 75, 44)];
+        _channelView = [[ChannelScrollerView alloc]initWithFrame:CGRectMake(ScreenWith/10, 20, ScreenWith - ScreenWith/10, 44)];
         _channelView.backgroundColor = [UIColor clearColor];
         
         _channelView.channelClassifyBK = ^(NSArray * array) {
@@ -147,8 +149,10 @@
         
         view.iteamDidSelectBK = ^(TaoBaoDiscountClassifyListModel * model) {
             
-            
-            
+            TaoBaoIteamDetailController * vc = [[TaoBaoIteamDetailController alloc]init];
+            vc._id = model._id;
+            weakSelf.hidesBottomBarWhenPushed = YES;
+            [weakSelf.navigationController pushViewController:vc animated:YES];
         };
         
         
@@ -178,7 +182,7 @@
     }
 
 
-
+    [self.channelView changeChannelScrollViewContOfSetWithPage:page];
 }
 
 
