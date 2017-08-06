@@ -10,7 +10,9 @@
 #import "TaoBaoListDetailCell.h"
 #import "NetWork.h"
 #import "MBProgressHUD.h"
-#import "HeadScrolADlView.h"
+#import "HeadAdvScrollerView.h"
+#import "UIImageView+WebCache.h"
+#import "ShareController.h"
 
 #define ScreenWith [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
@@ -25,6 +27,9 @@
 
 @property (nonatomic,strong)MBProgressHUD * hud;
 
+@property (nonatomic,strong)HeadAdvScrollerView * headScrollView;
+
+@property (nonatomic,strong)NSMutableArray * imageArr;
 @end
 
 @implementation TaoBaoIteamDetailController
@@ -33,6 +38,7 @@
     [super viewDidLoad];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.imageArr = [NSMutableArray new];
     
     [self tableViewInit];
     
@@ -47,6 +53,40 @@
 
     [self.hud hideAnimated:YES];
 }
+
+
+
+- (void)downloadImageViewWithURLArray:(NSArray *)urlArr{
+
+    
+    dispatch_group_t imageGroup = dispatch_group_create();
+    
+    for (NSString * url in urlArr) {
+        
+        dispatch_group_enter(imageGroup);
+        
+        SDWebImageManager * manger = [SDWebImageManager sharedManager];
+        [manger downloadImageWithURL:[NSURL URLWithString:url] options:SDWebImageHighPriority progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+    
+        } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished, NSURL *imageURL) {
+    
+            [self.imageArr addObject:image];
+            
+            dispatch_group_leave(imageGroup);
+        }];
+    }
+    
+    
+    dispatch_group_notify(imageGroup,  dispatch_get_main_queue(),^{
+       
+        NSLog(@"下载完成");
+        
+        self.tableView.tableHeaderView = self.headScrollView;
+        
+    });
+}
+
+
 
 
 #pragma mark- 获取商品详情
@@ -67,12 +107,29 @@
             
             weakSelf.model = arr1[0];
             
+            [weakSelf downloadImageViewWithURLArray:weakSelf.model.imagArr];
             
             [weakSelf.tableView reloadData];
+            
+            
+            
         }
     };
     
 }
+
+
+
+- (HeadAdvScrollerView *)headScrollView{
+
+    if (!_headScrollView) {
+        
+        _headScrollView = [[HeadAdvScrollerView alloc]initWithFrame:CGRectMake(0, 0, ScreenWith, ScreenWith)];
+        _headScrollView.imageArr = self.imageArr;
+    }
+    return _headScrollView;
+}
+
 
 - (NetWork *)net{
 
@@ -117,6 +174,11 @@
 
     NSLog(@"分享商品");
 
+    ShareController * share = [[ShareController alloc]init];
+    self.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:share animated:YES];
+    
+    
 }
 
 

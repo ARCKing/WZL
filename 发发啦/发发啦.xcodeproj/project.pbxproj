@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22D917F91F373A35006FB2F4 /* HeadAdvScrollerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D917F81F373A35006FB2F4 /* HeadAdvScrollerView.m */; };
+		22D917FD1F3741C8006FB2F4 /* ShareController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D917FB1F3741C8006FB2F4 /* ShareController.m */; };
+		22D917FE1F3741C8006FB2F4 /* ShareController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 22D917FC1F3741C8006FB2F4 /* ShareController.xib */; };
 		A90573D71DAF5CBC004EBCA5 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A90573D41DAF5CBC004EBCA5 /* libWeChatSDK.a */; };
 		A90573D91DAF5CFC004EBCA5 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A90573D81DAF5CFC004EBCA5 /* Security.framework */; };
 		A90573DB1DAF5D12004EBCA5 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A90573DA1DAF5D12004EBCA5 /* libsqlite3.0.tbd */; };
@@ -23,7 +26,6 @@
 		A94176F21F3564120029FD8E /* TaoBaoListDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A94176F01F3564120029FD8E /* TaoBaoListDetailCell.xib */; };
 		A94177001F3564D50029FD8E /* TaoBaoIteamDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = A94176FE1F3564D50029FD8E /* TaoBaoIteamDetailController.m */; };
 		A94177011F3564D50029FD8E /* TaoBaoIteamDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A94176FF1F3564D50029FD8E /* TaoBaoIteamDetailController.xib */; };
-		A94177041F3579D40029FD8E /* HeadScrolADlView.m in Sources */ = {isa = PBXBuildFile; fileRef = A94177031F3579D40029FD8E /* HeadScrolADlView.m */; };
 		A944E1E21D75183000900DCB /* EditProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A944E1E11D75183000900DCB /* EditProfileViewController.m */; };
 		A944E1E51D755F9800900DCB /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A944E1E41D755F9800900DCB /* EditViewController.m */; };
 		A9455A461DC8967D00012D27 /* group_refresh@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9455A441DC8967D00012D27 /* group_refresh@2x.png */; };
@@ -492,6 +494,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22D917F71F373A35006FB2F4 /* HeadAdvScrollerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadAdvScrollerView.h; sourceTree = "<group>"; };
+		22D917F81F373A35006FB2F4 /* HeadAdvScrollerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadAdvScrollerView.m; sourceTree = "<group>"; };
+		22D917FA1F3741C8006FB2F4 /* ShareController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShareController.h; sourceTree = "<group>"; };
+		22D917FB1F3741C8006FB2F4 /* ShareController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareController.m; sourceTree = "<group>"; };
+		22D917FC1F3741C8006FB2F4 /* ShareController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareController.xib; sourceTree = "<group>"; };
 		A90573D41DAF5CBC004EBCA5 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		A90573D51DAF5CBC004EBCA5 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
 		A90573D61DAF5CBC004EBCA5 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
@@ -520,8 +527,6 @@
 		A94176FD1F3564D50029FD8E /* TaoBaoIteamDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaoBaoIteamDetailController.h; sourceTree = "<group>"; };
 		A94176FE1F3564D50029FD8E /* TaoBaoIteamDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaoBaoIteamDetailController.m; sourceTree = "<group>"; };
 		A94176FF1F3564D50029FD8E /* TaoBaoIteamDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaoBaoIteamDetailController.xib; sourceTree = "<group>"; };
-		A94177021F3579D40029FD8E /* HeadScrolADlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadScrolADlView.h; sourceTree = "<group>"; };
-		A94177031F3579D40029FD8E /* HeadScrolADlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadScrolADlView.m; sourceTree = "<group>"; };
 		A944E1E01D75183000900DCB /* EditProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProfileViewController.h; sourceTree = "<group>"; };
 		A944E1E11D75183000900DCB /* EditProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditProfileViewController.m; sourceTree = "<group>"; };
 		A944E1E31D755F9800900DCB /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
@@ -1534,6 +1539,9 @@
 				A94176FD1F3564D50029FD8E /* TaoBaoIteamDetailController.h */,
 				A94176FE1F3564D50029FD8E /* TaoBaoIteamDetailController.m */,
 				A94176FF1F3564D50029FD8E /* TaoBaoIteamDetailController.xib */,
+				22D917FA1F3741C8006FB2F4 /* ShareController.h */,
+				22D917FB1F3741C8006FB2F4 /* ShareController.m */,
+				22D917FC1F3741C8006FB2F4 /* ShareController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1554,12 +1562,12 @@
 		A98106701F331BB60026123F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				22D917F71F373A35006FB2F4 /* HeadAdvScrollerView.h */,
+				22D917F81F373A35006FB2F4 /* HeadAdvScrollerView.m */,
 				A98106731F331DBD0026123F /* ListTableView.h */,
 				A98106741F331DBD0026123F /* ListTableView.m */,
 				A98A2C381F341B3A0009B989 /* ChannelScrollerView.h */,
 				A98A2C391F341B3A0009B989 /* ChannelScrollerView.m */,
-				A94177021F3579D40029FD8E /* HeadScrolADlView.h */,
-				A94177031F3579D40029FD8E /* HeadScrolADlView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2758,6 +2766,7 @@
 				A9AE663F1D66AD140067B081 /* home_ranking@3x.png in Resources */,
 				A9CE063F1D9E59B900FE2DB9 /* loading3@3x.png in Resources */,
 				A98F92DB1D7018A400A7137B /* icon_hongbao@3x.png in Resources */,
+				22D917FE1F3741C8006FB2F4 /* ShareController.xib in Resources */,
 				A9AE66161D66AAA70067B081 /* install_set@2x.png in Resources */,
 				A9A7EFE21DB4C9D200A88E10 /* home_icon_more@2x.png in Resources */,
 				A97F4A631DE43C0D0006CD87 /* icon_1.png in Resources */,
@@ -2937,6 +2946,7 @@
 				A98D4FB51F30748E0076AA8E /* JSONValueTransformer.m in Sources */,
 				A98403C31D6183AF0078C52B /* ___.xcdatamodeld in Sources */,
 				A968F5A41DD1836000181C36 /* shareEarnDetailVC.m in Sources */,
+				22D917FD1F3741C8006FB2F4 /* ShareController.m in Sources */,
 				A99935581E8B9CB900975D36 /* WithDrawRecordVC.m in Sources */,
 				A98BE3841D79230000E7F3E7 /* GrabDetailViewController.m in Sources */,
 				A94A4AC51D6D84B800755160 /* AFAutoPurgingImageCache.m in Sources */,
@@ -3016,7 +3026,6 @@
 				A94703E71D864FAF00D2EB96 /* GrabRedCashLuckVC.m in Sources */,
 				A996A05C1D77BC660045025F /* UserInfos.m in Sources */,
 				A9D6E3701DB6150C00A950E9 /* typeOneCell.m in Sources */,
-				A94177041F3579D40029FD8E /* HeadScrolADlView.m in Sources */,
 				A98403BA1D6183AF0078C52B /* AppDelegate.m in Sources */,
 				A9A7EFC91DB461EF00A88E10 /* SDWebImagePrefetcher.m in Sources */,
 				A98D4FB41F30748E0076AA8E /* JSONKeyMapper.m in Sources */,
@@ -3066,6 +3075,7 @@
 				A9E2025D1D87A3E900376881 /* shareEarnView.m in Sources */,
 				A95331981DCB514B00A561C3 /* MJRefreshGifHeader.m in Sources */,
 				A99935551E8B94D700975D36 /* WeiXinAndAliPayWithDrawVC.m in Sources */,
+				22D917F91F373A35006FB2F4 /* HeadAdvScrollerView.m in Sources */,
 				A9AFBE001DD00B6E00964A86 /* UMSocialShareSelectionViewCell.m in Sources */,
 				A98106661F32D8530026123F /* YiDianZiXunController.m in Sources */,
 				A98403B71D6183AF0078C52B /* main.m in Sources */,
