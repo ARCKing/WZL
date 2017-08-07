@@ -3036,15 +3036,25 @@
 /**用户导入文章url*/
 - (void)customerImportArticleURL:(NSString *)articleUrl andc_id:(NSString *)c_id{
     
+//    uid=$uid&url=$url&key=$key
+    
     AFHTTPSessionManager * manger = [AFHTTPSessionManager manager];
     manger.requestSerializer = [AFHTTPRequestSerializer serializer];
     
     NSDictionary * dict = [[NSUserDefaults standardUserDefaults]objectForKey:@"usermessage"];
     
+    NSString * key = @"9GM6&X3JG%GGfZuH1R0A3";
+
     NSMutableDictionary * dic = [NSMutableDictionary new];
     dic[@"uid"] = dict[@"uid"];
-    dic[@"c_id"] = c_id;
     dic[@"url"] = [NSString stringWithFormat:@"%@",articleUrl];
+    
+    
+    NSString * sourceString = [NSString stringWithFormat:@"uid=%@&url=%@&key=%@",dict[@"uid"],articleUrl,key];
+    
+    NSString * md5Code = [MD5Tool MD5ForUpper32Bate:sourceString];
+    
+    dic[@"sign"] = md5Code;
     
     NSString * urls = [NSString stringWithFormat:@"%@/App/Wxcai/wxCollect",KURL];
     [manger POST:urls parameters:dic  constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
@@ -3326,6 +3336,62 @@
         NSLog(@"error = %@",error);
     }];
 
+}
+
+
+#pragma mark- 版本更新
+/**版本更新*/
+- (void)checkNewVersionFromNet{
+    
+    AFHTTPSessionManager * manger = [AFHTTPSessionManager manager];
+    
+    //    manger.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    manger.requestSerializer = [AFHTTPRequestSerializer serializer];
+    
+    //    NSDictionary * dict = [[NSUserDefaults standardUserDefaults]objectForKey:@"userInfo"];
+    
+    //    NSMutableDictionary * dic = [NSMutableDictionary new];
+    
+    
+    NSString * urls = [NSString stringWithFormat:@"%@/App/Index/IOSUpload",KURL];
+    
+    [manger POST:urls parameters:nil  constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSLog(@"code=%@",responseObject[@"code"]);
+        NSLog(@"message=%@",responseObject[@"message"]);
+        
+        NSString * code = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
+        NSString * message = [NSString stringWithFormat:@"%@",responseObject[@"message"]];
+        
+        NSMutableArray * dataArray = [NSMutableArray new];
+        
+        if ([code isEqualToString: @"1"]) {
+            
+            if (responseObject[@"data"] != [NSNull null]) {
+                
+                NSDictionary * data = responseObject[@"data"];
+                
+                if (data) {
+                    
+                    VersionModel * model = [[VersionModel alloc]initWithDictionary:data error:nil];
+                    
+                    [dataArray addObject:model];
+                }
+            }
+        }
+        
+        self.checkNewVewsionBK(code,message,nil,dataArray,nil);
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        NSLog(@"%@",error);
+        
+    }];
+    
 }
 
 @end

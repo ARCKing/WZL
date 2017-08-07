@@ -18,6 +18,7 @@
 #import "AFNetworking.h"
 #import <UMMobClick/MobClick.h>
 #import "HomeNextViewController.h"
+#import "VersionModel.h"
 
 #define IOS_VERSION_10 (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_9_x_Max)?(YES):(NO)
 
@@ -60,6 +61,8 @@
     
     [self.window makeKeyAndVisible];
     
+    
+    [self checkNewVersion];
     
     //========友盟统计============
     
@@ -462,6 +465,36 @@
         }
     }
 
+    
+    
+    
+    if (alertView.tag == 111111) {
+        
+        if (buttonIndex == 1) {
+            
+            NSLog(@"下载");
+            
+            //            NSString * url = @"https://itunes.apple.com/us/app/%E7%9F%A5%E4%BA%86-%E9%98%85%E8%AF%BB%E8%B5%84%E8%AE%AF/id1221771642?l=zh&ls=1&mt=8";
+            
+            
+            //http://zqw.2662126.com/Web/show/app.html
+            
+            NSString * url = @"http://wz.lgmdl.com/Web/show/app.html";
+            
+            
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+            
+        }else{
+            
+            NSLog(@"忽略");
+            
+        }
+        
+        
+        return;
+    }
+
+    
 }
 
 
@@ -607,6 +640,51 @@
     
 }
 
+
+
+#pragma mark- 版本更新提示
+//===版本更新提示======
+
+- (void)checkNewVersion{
+    
+    //CFBundleShortVersionString - version
+    //CFBundleVersion - Build
+    
+    
+    NSString * currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+    NSLog(@"[当前版本号:%@]",currentVersion);
+    
+    NetWork * net = [[NetWork alloc]init];
+    
+    [net checkNewVersionFromNet];
+    
+    net.checkNewVewsionBK=^(NSString * code,NSString * message,NSString * str,NSArray * dataArray,NSArray * arr){
+        
+        if (dataArray.count > 0) {
+            
+            VersionModel * model = dataArray[0];
+            
+            NSString * newVersion = model.version_number;
+            
+            
+            
+            if ([currentVersion compare: newVersion] == NSOrderedAscending) {
+                
+                UIAlertView * alter = [[UIAlertView alloc]initWithTitle:@"有新版本啦!"
+                                                                message:model.remarks
+                                                               delegate:self
+                                                      cancelButtonTitle:@"忽略"
+                                                      otherButtonTitles:@"去更新", nil];
+                alter.tag = 111111;
+                
+                [alter show];
+            }
+            
+            
+        }
+        
+    };
+}
 
 
 

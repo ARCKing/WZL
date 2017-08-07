@@ -66,11 +66,15 @@
     NSLog(@"addArticleButtonAction");
     __weak wkWebViewController * weakSelf = self;
 
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
     if (self.isYiDianZiXun) {
         
         [self.net YiDianZiXunImportArticelWithTitle:self.importArticleModel.title thumb:self.importArticleModel.image _id:self.importArticleModel.docid];
         
         self.net.importArticleTitleBK = ^(NSString *code, NSString *message) {
+
+            [hud hideAnimated:YES];
             
             [weakSelf showHudWithMessage:message andDissmissdelay:2.0];
         };
@@ -81,6 +85,8 @@
     
         self.net.importArticleTitleBK = ^(NSString *code, NSString *message) {
         
+            [hud hideAnimated:YES];
+            
             [weakSelf showHudWithMessage:message andDissmissdelay:2.0];
         };
     }

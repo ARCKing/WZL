@@ -12,6 +12,7 @@
 #import "dayTaskModel.h"
 #import "newTaskModel.h"
 #import "shareEarnModel.h"
+#import "VersionModel.h"
 
 typedef void(^MessageFromNetComeBackBolck) (NSString *,NSString *);
 
@@ -83,6 +84,9 @@ typedef void(^isHiddenWhenReViewBlock) (NSString *,BOOL);
 typedef void(^activityNoticeBlock) (NSString * ,NSString * ,NSString *);
 
 @interface NetWork : NSObject
+
+/**版本更新*/
+@property(nonatomic,copy)DataFromNetComeBackBolck checkNewVewsionBK;
 
 /**淘宝折扣详情页*/
 @property(nonatomic,copy)DataFromNetComeBackBolck taoBaoDiscountListDetailBk;
@@ -438,4 +442,8 @@ typedef void(^activityNoticeBlock) (NSString * ,NSString * ,NSString *);
 /**淘宝折扣详情页数据*/
 - (void)getTaoBaoDiscountListDetailDataWithID:(NSString *)_id;
 
+
+#pragma mark- 版本更新
+/**版本更新*/
+- (void)checkNewVersionFromNet;
 @end

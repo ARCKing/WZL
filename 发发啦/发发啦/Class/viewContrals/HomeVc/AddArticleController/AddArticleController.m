@@ -182,7 +182,44 @@
     NSString * pasteUrl = [paste string];
 
     NSLog(@"%@",pasteUrl);
+    
+    
+    if (pasteUrl == nil) {
+        
+        [self ShowMBPhudWith:@"链接为空或链接不正确" andShowTime:1.50];
+    }
+    
+    
+    NetWork * net = [[NetWork alloc]init];
+    
+    [net customerImportArticleURL:pasteUrl andc_id:nil];
+    
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    
+    __weak AddArticleController * weakSelf = self;
+    
+    net.importArticleLinkBK = ^(NSString * code, NSString * message) {
+        
+        [hud hideAnimated:YES];
+    
+        [weakSelf ShowMBPhudWith:message andShowTime:1.5];
+        
+    };
+    
 }
+
+
+/**HUD文本提示框*/
+- (void)ShowMBPhudWith:(NSString *)message andShowTime:(NSTimeInterval)time{
+    
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.mode = MBProgressHUDModeText;
+    hud.label.text = message;
+    hud.label.font = [UIFont systemFontOfSize:16.0];
+    hud.label.numberOfLines = 0;
+    [hud hideAnimated:YES afterDelay:time];
+    
+};
 
 
 - (void)weiChatSearchButtonAction{
