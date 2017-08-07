@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TaoBaoDiscountClassifyListModel.h"
 
 @interface ShareController : UIViewController
+
+@property(nonatomic,strong)NSArray * imageArr;
+
+@property(nonatomic,strong)NSArray * imageUrlArr;
+
+@property(nonatomic,strong)TaoBaoDiscountClassifyListModel * model;
 
 @end

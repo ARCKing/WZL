@@ -175,6 +175,10 @@
     NSLog(@"分享商品");
 
     ShareController * share = [[ShareController alloc]init];
+    share.imageArr = self.imageArr;
+    share.imageUrlArr = self.model.imagArr;
+    share.model = self.model;
+    
     self.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:share animated:YES];
     
@@ -186,6 +190,18 @@
 
     NSLog(@"领50元优惠券");
 
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"taobao://"]]) {
+     
+        NSString * url = self.model.couponurl;
+        
+        NSString * url_1 = [url substringFromIndex:8];
+        
+        NSLog(@"%@",url_1);
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"taobao://%@",url_1]]];
+        
+    }
+    
 }
 
 
@@ -193,7 +209,7 @@
 
     UIView * head = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWith, ScreenWith)];
     
-    head.backgroundColor = [UIColor redColor];
+    head.backgroundColor = [UIColor whiteColor];
     
     self.tableView.tableHeaderView = head;
     
@@ -236,6 +252,13 @@
         
         NSLog(@"唤起淘宝");
         
+        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"taobao://"]]) {
+            
+            NSString * taobao = [NSString stringWithFormat:@"taobao://item.taobao.com/item.htm?id=%@",self.model.itemid];
+            
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:taobao]];
+            
+        }
     }
     
 }

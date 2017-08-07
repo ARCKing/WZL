@@ -125,9 +125,9 @@
 - (void)MJ_Refresh{
     
     
-    self.page = 0;
+    self.page = 1;
     
-    [self getListFromNetWithPage:0 andName:[self._id integerValue] isRefresh:YES];
+    [self getListFromNetWithPage:1 andName:[self._id integerValue] isRefresh:YES];
 }
 
 

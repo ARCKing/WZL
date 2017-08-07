@@ -69,6 +69,7 @@
 	<string>1.0.0</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>taobao</string>
 		<string>mqqbrowser</string>
 		<string>mttbrowser</string>
 		<string>baidumobads</string>

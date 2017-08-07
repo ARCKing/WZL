@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16D30" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -14,7 +14,9 @@
             <connections>
                 <outlet property="QQBt" destination="VKQ-8p-Bu1" id="c32-xq-JPQ"/>
                 <outlet property="QZoneBt" destination="aUH-yP-slQ" id="ntC-yv-HFY"/>
+                <outlet property="editieLabel" destination="vTh-jU-Ztb" id="a3A-r4-rSV"/>
                 <outlet property="friendBt" destination="pOX-XQ-x1A" id="5Fx-dA-Iyv"/>
+                <outlet property="selectImageLabel" destination="eGy-ON-cQI" id="Jbd-sQ-6sV"/>
                 <outlet property="selectNumLabel" destination="Thk-2q-or9" id="svQ-dC-q5q"/>
                 <outlet property="textView" destination="AI5-Tu-xCj" id="Dov-eV-HLc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -27,67 +29,67 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogl-F1-rdF">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogl-F1-rdF">
                     <rect key="frame" x="0.0" y="587" width="75" height="75"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="ogl-F1-rdF" secondAttribute="height" multiplier="1:1" id="Hl9-wp-vpQ"/>
                     </constraints>
-                    <state key="normal" title="微信好友">
+                    <state key="normal" title="微信好友" image="pic_share_weixin.png">
                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="weiChatBtAction:" destination="-1" eventType="touchUpInside" id="5Ki-5U-Rxm"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pOX-XQ-x1A">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pOX-XQ-x1A">
                     <rect key="frame" x="75" y="587" width="75" height="75"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="pOX-XQ-x1A" secondAttribute="height" multiplier="1:1" id="3oW-Uw-yQC"/>
                     </constraints>
-                    <state key="normal" title="朋友圈">
+                    <state key="normal" title="朋友圈" image="pic_share_friends.png">
                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="friendBtAction:" destination="-1" eventType="touchUpInside" id="52c-d8-LTx"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93F-n2-31a">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93F-n2-31a">
                     <rect key="frame" x="150" y="587" width="75" height="75"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="93F-n2-31a" secondAttribute="height" multiplier="1:1" id="ff1-LL-y5j"/>
                     </constraints>
-                    <state key="normal" title="微博">
+                    <state key="normal" title="微博" image="pic_share_sina.png">
                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="weiboBtAction:" destination="-1" eventType="touchUpInside" id="oy9-KG-hJl"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKQ-8p-Bu1">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VKQ-8p-Bu1">
                     <rect key="frame" x="225" y="587" width="75" height="75"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="VKQ-8p-Bu1" secondAttribute="height" multiplier="1:1" id="bJC-Mk-kOA"/>
                     </constraints>
-                    <state key="normal" title="QQ">
+                    <state key="normal" title="QQ" image="pic_share_tencent.png">
                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="QQBtAction:" destination="-1" eventType="touchUpInside" id="zgu-1A-5PG"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUH-yP-slQ">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUH-yP-slQ">
                     <rect key="frame" x="300" y="587" width="75" height="75"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="aUH-yP-slQ" secondAttribute="height" multiplier="1:1" id="JCQ-Rg-JX6"/>
                     </constraints>
-                    <state key="normal" title="QQ空间">
+                    <state key="normal" title="QQ空间" image="pic_share_zone.png">
                         <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="qzoneBtAction:" destination="-1" eventType="touchUpInside" id="kgx-C9-ksg"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="———————图文分享到———————" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97i-cF-MiZ">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="—————图文分享到—————" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97i-cF-MiZ">
                     <rect key="frame" x="5" y="552" width="365" height="25"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="25" id="nPD-8S-Z0e"/>
@@ -126,8 +128,7 @@
                     <constraints>
                         <constraint firstAttribute="width" secondItem="AI5-Tu-xCj" secondAttribute="height" multiplier="15:8" id="8Sg-lG-NWs"/>
                     </constraints>
-                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="编辑分享文案" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vTh-jU-Ztb">
@@ -185,7 +186,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已选4张" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Thk-2q-or9">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已选0张" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Thk-2q-or9">
                     <rect key="frame" x="255" y="79" width="100" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="DuK-ZP-UXy"/>
@@ -243,5 +244,10 @@
     </objects>
     <resources>
         <image name="close_black.png" width="30" height="30"/>
+        <image name="pic_share_friends.png" width="35" height="35"/>
+        <image name="pic_share_sina.png" width="35" height="35"/>
+        <image name="pic_share_tencent.png" width="35" height="35"/>
+        <image name="pic_share_weixin.png" width="35" height="35"/>
+        <image name="pic_share_zone.png" width="35" height="35"/>
     </resources>
 </document>

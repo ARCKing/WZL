@@ -1672,27 +1672,13 @@
 
 }
 
-
-
-
-
-
-
 //创建分享内容对象
 - (UMSocialMessageObject *)creatMessageObject
 {
     
     NSDictionary * dict =[[NSUserDefaults standardUserDefaults]objectForKey:@"usermessage"];
     NSString * uid = dict[@"uid"];
-//    NSString * token = dict[@"token"];
-//    NSString * id_ = self.id_;
 
-    
-    
-//    NSString * urlStr = @"http://wz.lefei.com/App/Article/detail_new";
-
-    
-    
     //创建分享消息对象
     UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
     NSString *title = self.bigTitle;
@@ -1700,75 +1686,9 @@
     NSString *text = self.abstract;
     NSString * thumbImg = self.thumbimg;
     
-    
-//    UIImage *image = [UIImage imageNamed:@"icon"];
-    //    if (self.isText) {
-    //        //纯文本分享
-    //        messageObject.text = text;
-    //    }
-    //    switch (self.mediastyle) {
-    //        case 0:
-    //            if (self.isUrl) {//创建网页分享内容对象
-                    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:title descr:text thumImage:thumbImg];
-                    [shareObject setWebpageUrl:url];
-                    messageObject.shareObject = shareObject;
-    //            }
-    //            break;
-    //        case 1:
-    //        {
-    //            //创建图片对象
-    //            UMShareImageObject *shareObject = [UMShareImageObject shareObjectWithTitle:title descr:text thumImage:image];
-    //            [shareObject setShareImage:@"http://dev.umeng.com/images/tab2_1.png"];
-    //            messageObject.shareObject = shareObject;
-    //
-    //            //                //@discuss linkedin平台需要传入的图片是url，如果图片不是https的，linkedin的sdk会崩溃，需要在info.plist中加入
-    //            //                    <key>NSAppTransportSecurity</key>
-    //            //                    <dict>
-    //            //                    <key>NSAllowsArbitraryLoads</key>
-    //            //                    <true/>
-    //            //                    </dict>
-    //
-    //            //                NSString* img_url = @"http://bbs.umeng.com/data/attachment/forum/201609/14/113141r2jqq0pjlooj0753.jpg";
-    //            //                //NSString* img_url = @"https://content.linkedin.com/content/dam/developer/global/en_US/site/img/ipad_getstarted.png";
-    //            //                UMShareImageObject *shareObject = [UMShareImageObject shareObjectWithTitle:title descr:text thumImage:img_url];
-    //            //                [shareObject setShareImage:img_url];
-    //
-    //            //                NSString* img_url = @"http://dev.umeng.com/images/tab2_1.png";//@"http://bbs.umeng.com/data/attachment/forum/201609/14/113141r2jqq0pjlooj0753.jpg";
-    //            //                //NSString* img_url = @"https://content.linkedin.com/content/dam/developer/global/en_US/site/img/ipad_getstarted.png";
-    //            //                UMShareImageObject *shareObject = [UMShareImageObject shareObjectWithTitle:title descr:text thumImage:img_url];
-    //            //                [shareObject setShareImage:img_url];
-    //            //                messageObject.shareObject = shareObject;
-    //
-    //        }
-    //            break;
-    //        case 2:
-    //        {
-    //            UMShareVideoObject *shareObject = [UMShareVideoObject shareObjectWithTitle:title descr:text thumImage:[UIImage imageNamed:@"icon"]];
-    //            [shareObject setVideoUrl:@"http://video.sina.com.cn/p/sports/cba/v/2013-10-22/144463050817.html"];
-    //            messageObject.shareObject = shareObject;
-    //        }
-    //
-    //            break;
-    //        case 3:
-    //        {
-    //            UMShareMusicObject *shareObject = [UMShareMusicObject shareObjectWithTitle:title descr:text thumImage:[UIImage imageNamed:@"icon"]];
-    //            [shareObject setMusicUrl:@"http://music.huoxing.com/upload/20130330/1364651263157_1085.mp3"];
-    //            messageObject.shareObject = shareObject;
-    //        }
-    //
-    //            break;
-    //        default:
-    //            break;
-    //    }
-    
-    
-//    //创建图片对象
-//    UIImage * img = [UIImage imageNamed:@"1.jpg"];
-//    UMShareImageObject *shareImgObject = [UMShareImageObject shareObjectWithTitle:title descr:text thumImage:img];
-//    [shareImgObject setShareImage:@"http://dev.umeng.com/images/tab2_1.png"];
-//    messageObject.shareObject = shareObject;
-    
-    
+    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:title descr:text thumImage:thumbImg];
+    [shareObject setWebpageUrl:url];
+    messageObject.shareObject = shareObject;
     
     return messageObject;
 }
