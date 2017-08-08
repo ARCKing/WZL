@@ -103,6 +103,7 @@ typedef NS_ENUM(NSInteger, ShareHelperShareType)
         
         _selectImageView = [[SelectImage_ShareView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.selectImageLabel.frame)+8, ScreenWith, H)];
         _selectImageView.imageArr = self.imageArr;
+        _selectImageView.imageUrlArr = self.imageUrlArr;
     }
 
     WEAK_SELF;
@@ -134,6 +135,8 @@ typedef NS_ENUM(NSInteger, ShareHelperShareType)
         
         [bt setImageEdgeInsets:UIEdgeInsetsMake(-bt.titleLabel.intrinsicContentSize.height, 0, 0, -bt.titleLabel.intrinsicContentSize.width)];
         [bt setTitleEdgeInsets:UIEdgeInsetsMake(bt.currentImage.size.height + bt.titleLabel.intrinsicContentSize.height, -bt.currentImage.size.width, 0, 0)];
+        
+        bt.titleLabel.font = [UIFont systemFontOfSize:16.0];
     }
 
 }

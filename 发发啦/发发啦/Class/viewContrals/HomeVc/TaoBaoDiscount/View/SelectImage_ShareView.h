@@ -14,5 +14,7 @@ typedef void(^SelectImage_ShareViewBlock)(NSInteger,BOOL);
 
 @property (nonatomic,strong)NSArray * imageArr;
 
+@property (nonatomic,strong)NSArray * imageUrlArr;
+
 @property (nonatomic,strong)SelectImage_ShareViewBlock selectImageBK;
 @end

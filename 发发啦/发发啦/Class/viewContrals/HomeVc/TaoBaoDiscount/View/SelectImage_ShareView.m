@@ -7,6 +7,7 @@
 //
 
 #import "SelectImage_ShareView.h"
+#import "UIImageView+WebCache.h"
 
 #define ScreenWith [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
@@ -44,7 +45,7 @@
     if (!_scrollView) {
         
         _scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(20, 0, ScreenWith - 40, image_W_H)];
-        _scrollView.contentSize = CGSizeMake(self.imageArr.count * image_W_H + (self.imageArr.count - 1) * 10, 0);
+        _scrollView.contentSize = CGSizeMake(self.imageUrlArr.count * image_W_H + (self.imageUrlArr.count - 1) * 10, 0);
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.pagingEnabled = YES;
         _scrollView.backgroundColor = [UIColor clearColor];
@@ -58,9 +59,9 @@
 
 - (void)addImageAndBt{
 
-    for (int i = 0; i < self.imageArr.count ; i++) {
+    for (int i = 0; i < self.imageUrlArr.count ; i++) {
         
-        UIImageView * imageView = [self addImageViewWithFram:CGRectMake((image_W_H + 10) * i, 0, image_W_H, image_W_H) andImage:self.imageArr[i]];
+        UIImageView * imageView = [self addImageViewWithFram:CGRectMake((image_W_H + 10) * i, 0, image_W_H, image_W_H) andImage:self.imageUrlArr[i]];
         
         UIButton * bt = [self addSelectButtonWithFram:CGRectMake(image_W_H *3/4 - 2, 2, image_W_H/4, image_W_H/4)];
        
@@ -75,10 +76,10 @@
 
 
 
-- (UIImageView * )addImageViewWithFram:(CGRect)frame andImage:(UIImage *)image{
+- (UIImageView * )addImageViewWithFram:(CGRect)frame andImage:(NSString *)image{
 
     UIImageView * imageV = [[UIImageView alloc]initWithFrame:frame];
-    imageV.image = image;
+    [imageV sd_setImageWithURL:[NSURL URLWithString:image]];
     imageV.backgroundColor = [UIColor whiteColor];
     imageV.userInteractionEnabled = YES;
     return imageV;
