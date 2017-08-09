@@ -68,7 +68,7 @@ typedef NS_ENUM(NSInteger, ShareHelperShareType)
     
     [self btSetImageAndTitle];
     
-    self.taokouling = [NSString stringWithFormat:@"%@\n%@\n%@",self.model.itemtitle,self.model.guide_article,self.model.taokouling];
+    self.taokouling = [NSString stringWithFormat:@"【品名】%@\n--------\n【在售价】%@元\n--------\n【内部价】%@元\n--------\n【推荐】%@\n--------\n 抢购流程\n复制这条信息,%@,打开【手机淘宝】即可领券下单",self.model.itemtitle,self.model.itemprice,self.model.itemendprice,self.model.guide_article,self.model.taokouling];
     
     self.textView.delegate = self;
     self.textView.text = self.taokouling;
@@ -202,7 +202,7 @@ typedef NS_ENUM(NSInteger, ShareHelperShareType)
 
     NSLog(@"朋友圈分享");
     
-    [self SlcomposeShareWithImageArr:self.selectImageArr andImageUrlArr:self.imageUrlArr andShareType:ShareHelperShareTypeWeChat andTitle:self.model.itemtitle andUrl:self.model.couponurl];
+    [self WeiFriendSlcomposeShareWithImageArr:self.selectImageArr andImageUrlArr:self.imageUrlArr andShareType:ShareHelperShareTypeWeChat andTitle:self.model.itemtitle andtaoKouling:self.model.taokouling];
 }
 
 
@@ -232,11 +232,87 @@ typedef NS_ENUM(NSInteger, ShareHelperShareType)
 - (IBAction)qzoneBtAction:(id)sender {
     
     NSLog(@"QQ空间分先");
-    [self SlcomposeShareWithImageArr:self.selectImageArr andImageUrlArr:self.imageUrlArr andShareType:ShareHelperShareTypeQQ andTitle:self.model.itemtitle andUrl:self.model.couponurl];
+   // [self SlcomposeShareWithImageArr:self.selectImageArr andImageUrlArr:self.imageUrlArr andShareType:ShareHelperShareTypeQQ andTitle:self.model.itemtitle andUrl:self.model.couponurl];
+
+    
+    [self WeiFriendSlcomposeShareWithImageArr:self.selectImageArr andImageUrlArr:self.imageUrlArr andShareType:ShareHelperShareTypeQQ andTitle:self.model.itemtitle andtaoKouling:self.model.taokouling];
 
 }
 
 //==================================
+
+//朋友圈
+- (void)WeiFriendSlcomposeShareWithImageArr:(NSArray *)imageArr andImageUrlArr:(NSArray *)imageUrlArr andShareType:(ShareHelperShareType)type andTitle:(NSString *)title andtaoKouling:(NSString *)taokouling{
+    
+    //创建分享内容编辑控制器，指定类型为新浪微博
+    SLComposeViewController *compose =
+    [SLComposeViewController composeViewControllerForServiceType:[self serviceTypeWithType:type]];
+    //设置分享内容
+    [compose setInitialText:[NSString stringWithFormat:@"%@%@",title,taokouling]];
+    
+    
+    if (imageArr.count == 0) {
+        
+        imageArr = [NSArray arrayWithObject:self.imageArr[0]];
+    }
+    
+    // 添加要分享的图片
+    for ( id obj in imageArr){
+        
+        if ([obj isKindOfClass:[UIImage class]]){
+            [compose addImage:(UIImage *)obj];
+        }
+    }
+    
+    
+    /*
+     //设置超链接
+     for (id obj in imageUrlArr) {
+     
+     NSURL * url = [NSURL URLWithString:obj];
+     
+     if ([url isKindOfClass:[NSURL class]]){
+     [compose addURL:(NSURL *)url];
+     }
+     }
+     */
+    
+    //设置分享图片
+    //    [compose addImage:self.imageArr[0]];
+
+    //NSString * taobao = [NSString stringWithFormat:@"taobao://item.taobao.com/item.htm?id=%@",self.model.itemid];
+
+    //设置超链接
+    //[compose addURL:[NSURL URLWithString:taobao]];
+    
+    
+    
+    //设置回调
+    __block SLComposeViewController *blockController = compose;
+    compose.completionHandler = ^(SLComposeViewControllerResult result){
+        if (result == SLComposeViewControllerResultDone) {
+            NSLog(@"发送完成");
+        }else{
+            NSLog(@"发送失败");
+        }
+        //弹回
+        [blockController dismissViewControllerAnimated:YES completion:nil];
+    };
+    
+    
+    @try{
+        
+        //弹出控制器
+        [self presentViewController:compose animated:YES completion:nil];
+        
+    } @catch (NSException *exception){
+        NSLog(@"没有安装");
+        
+    } @finally {
+        
+    }
+    
+}
 
 
 //调用原生分享
@@ -274,6 +350,8 @@ typedef NS_ENUM(NSInteger, ShareHelperShareType)
     
     //设置超链接
     [compose addURL:[NSURL URLWithString:url]];
+  
+    
     
     //设置回调
     __block SLComposeViewController *blockController = compose;
@@ -470,12 +548,14 @@ typedef NS_ENUM(NSInteger, ShareHelperShareType)
         
 
     }else{
-        NSString * str = [NSString stringWithFormat:@"%@\n%@",title,taoKouling];
+//        NSString * str = [NSString stringWithFormat:@"%@\n%@",title,taoKouling];
     
         UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
     
-        messageObject.text = [NSString stringWithFormat:@"{%@}\n%@",str,url];
+//        messageObject.text = [NSString stringWithFormat:@"{%@}\n%@",str,url];
     
+        messageObject.text = self.taokouling;
+        
         return messageObject;
     }
 

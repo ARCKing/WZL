@@ -44,7 +44,7 @@
     
     
     NSArray * className = @[@"Home_ViewController",@"Money_ViewController",@"Invite_ViewController",@"Article_ViewController"];
-    NSArray * classTitleName = @[@"首页",@"热门",@"推荐",@"文章"];
+    NSArray * classTitleName = @[@"首页",@"赚钱",@"收徒",@"文章"];
     NSArray * picArray = @[@"tab_home_nor.png",@"fire_usel.png",@"star_usel.png",@"tab_article_nor.png"];
     NSArray * selectArray = @[@"tab_home_slt.png",@"fire_sel.png",@"star_sel.png",@"tab_article_slt.png"];
     
