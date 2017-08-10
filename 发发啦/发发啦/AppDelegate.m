@@ -40,7 +40,7 @@
       [WXApi registerApp:@"wxeb07f2b9056ab6d3"];
 //        [WXApi registerApp:@"3baf1193c85774b3fd9d18447d76cab0"];
 
-    
+    //公司的"wxeb07f2b9056ab6d3", "67ea944b14f9f4b548603cb0bb9076d0"
     
     
     NSArray * className = @[@"Home_ViewController",@"Money_ViewController",@"Invite_ViewController",@"Article_ViewController"];
@@ -109,8 +109,8 @@
     // 获取友盟social版本号
     //NSLog(@"UMeng social version: %@", [UMSocialGlobal umSocialSDKVersion]);
     
-//    //设置微信的appKey和appSecret
-//    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wxdc1e388c3822c80b" appSecret:@"3baf1193c85774b3fd9d18447d76cab0" redirectURL:@"http://mobile.umeng.com/social"];
+//    //设置微信的appKey和appSecret "wxeb07f2b9056ab6d3", "67ea944b14f9f4b548603cb0bb9076d0"
+//    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wxeb07f2b9056ab6d3" appSecret:@"67ea944b14f9f4b548603cb0bb9076d0" redirectURL:@"http://mobile.umeng.com/social"];
     
     
     //设置分享到QQ互联的appKey和appSecret

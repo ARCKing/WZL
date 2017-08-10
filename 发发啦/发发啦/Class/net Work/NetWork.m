@@ -3269,7 +3269,7 @@
 
 #pragma mark- 淘宝折扣分类列表
 /**淘宝折扣分类列表*/
-- (void)getTaoBaoDiscountChannelClassifyListWithCat:(NSUInteger)cat andPage:(NSInteger)page{
+- (void)getTaoBaoDiscountChannelClassifyListWithCat:(NSInteger)cat andPage:(NSInteger)page{
 
     AFHTTPSessionManager * manger = [AFHTTPSessionManager manager];
     NSString * urls = [NSString stringWithFormat:@"https://mmy.gxlyf.cn/api/get-tao-list?cat=%ld&page=%ld",cat,page];

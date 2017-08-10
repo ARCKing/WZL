@@ -436,7 +436,7 @@ typedef void(^activityNoticeBlock) (NSString * ,NSString * ,NSString *);
 
 #pragma mark- 淘宝折扣分类列表
 /**淘宝折扣分类列表*/
-- (void)getTaoBaoDiscountChannelClassifyListWithCat:(NSUInteger)cat andPage:(NSInteger)page;
+- (void)getTaoBaoDiscountChannelClassifyListWithCat:(NSInteger)cat andPage:(NSInteger)page;
 
 #pragma mark- 淘宝折扣详情页数据
 /**淘宝折扣详情页数据*/
