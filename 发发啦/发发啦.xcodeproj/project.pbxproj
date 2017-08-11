@@ -3242,7 +3242,7 @@
 				CODE_SIGN_ENTITLEMENTS = "发发啦/发发啦.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Guangxi City Network Technology Co., Ltd. (939XX592SN)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = LY9Q54F6JE;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3291,7 +3291,7 @@
 				CODE_SIGN_ENTITLEMENTS = "发发啦/发发啦.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Guangxi City Network Technology Co., Ltd. (939XX592SN)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = LY9Q54F6JE;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

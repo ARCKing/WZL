@@ -106,6 +106,9 @@ typedef NS_ENUM(NSInteger, ShareHelperShareType)
         _selectImageView.imageUrlArr = self.imageUrlArr;
     }
 
+    
+    self.selectImageArr = [NSMutableArray arrayWithArray:self.imageArr];
+    
     WEAK_SELF;
     _selectImageView.selectImageBK = ^(NSInteger tag, BOOL isSelect) {
       
@@ -562,6 +565,14 @@ typedef NS_ENUM(NSInteger, ShareHelperShareType)
     
     
     
+}
+
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+
+
+    [self.textView resignFirstResponder];
+
 }
 
 

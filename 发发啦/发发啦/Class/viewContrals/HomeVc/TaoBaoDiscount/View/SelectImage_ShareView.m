@@ -63,8 +63,10 @@
         
         UIImageView * imageView = [self addImageViewWithFram:CGRectMake((image_W_H + 10) * i, 0, image_W_H, image_W_H) andImage:self.imageUrlArr[i]];
         
-        UIButton * bt = [self addSelectButtonWithFram:CGRectMake(image_W_H *3/4 - 2, 2, image_W_H/4, image_W_H/4)];
+        UIButton * bt = [self addSelectButtonWithFram:CGRectMake(0, 0, image_W_H, image_W_H)];
        
+        bt.imageEdgeInsets = UIEdgeInsetsMake(-image_W_H/2 - image_W_H/4,image_W_H/2 + image_W_H/4, 0, 0);
+        
         bt.tag = 3300 + i;
         
         [imageView addSubview:bt];
@@ -94,6 +96,7 @@
     [bt setImage:[UIImage imageNamed:@"icon_u_select"] forState:UIControlStateNormal];
     [bt setImage:[UIImage imageNamed:@"icon_s_select"] forState:UIControlStateSelected];
     [bt addTarget:self action:@selector(btActionWithtBt:) forControlEvents:UIControlEventTouchUpInside];
+    bt.selected = YES;
     return bt;
 }
 

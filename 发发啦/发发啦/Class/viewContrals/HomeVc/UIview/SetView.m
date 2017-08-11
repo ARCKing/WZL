@@ -171,7 +171,9 @@
                 label.textAlignment = NSTextAlignmentRight;
                 [button addSubview:label];
                 label.textColor = [UIColor lightGrayColor];
-                label.text = @"1.1.4";
+                NSString * currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];
+
+                label.text = currentVersion;
             }
         }
         

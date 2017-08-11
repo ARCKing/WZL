@@ -106,6 +106,9 @@
 
 @property(nonatomic,strong)NSTimer * timer;
 
+@property(nonatomic,strong)NSTimer * advTimer;
+
+
 @property(nonatomic,strong)UIButton * bellButton;
 @property(nonatomic,strong)UIView * bellRed;
 
@@ -140,6 +143,8 @@
 @property(nonatomic,strong)UILabel * label2;
 @property(nonatomic,strong)UILabel * label3;
 
+@property(nonatomic,assign)BOOL left;
+
 @end
 
 @implementation Home_ViewController
@@ -148,6 +153,10 @@
 
     
     [super viewWillAppear:animated];
+    
+    
+    [self addadvTimer];
+    
     
     [MobClick beginLogPageView:@"PageOne"];//("PageOne"为页面名称，可自定义)
     
@@ -395,6 +404,9 @@
     
     [self getActivityMessage];
 
+    
+    self.left = YES;
+    
 }
 
 #pragma mark- 系统设置头像回调
@@ -1501,116 +1513,6 @@
 }
 
 
-//#pragma mark- 将头像保存至沙盒
-//- (void)saveIconToLocal:(NSData *)iconData{
-//
-//    NSDictionary * dict = [self.userDefauls objectForKey:@"usermessage"];
-//
-//    NSString * iconPaths = dict[@"iconPath"];
-//    
-//    
-//    NSLog(@"00%@",iconPaths);
-//    
-////    iconPaths = [self.CDManger checkDataWithIconPath];
-////    
-////    NSLog(@"000%@",iconPaths);
-//
-//    if (iconPaths == nil) {
-//        
-//        NSLog(@"11%@",iconPaths);
-//        
-//        NSString * imageFilePath =[[NSHomeDirectory()stringByAppendingPathComponent:@"Documents"]stringByAppendingPathComponent:@"customer_icon"];
-//        
-//#pragma mark- icon路劲存储
-////
-//       NSMutableDictionary * muDict = [NSMutableDictionary dictionaryWithDictionary:dict];
-//        
-//        [muDict setObject:imageFilePath forKey:@"iconPath"];
-//        
-//        NSDictionary * newDic = [NSDictionary dictionaryWithDictionary:muDict];
-//        
-//        [self.userDefauls setObject:newDic forKey:@"usermessage"];
-//        
-//        BOOL savePath = [self.userDefauls synchronize];
-//        
-//        
-////        savePath = [self.CDManger insertIntoDataWithIconPath:imageFilePath];
-//        iconPaths = imageFilePath;
-//        
-//        
-//        if (savePath == NO) {
-//            NSLog(@"头像路径存入失败");
-//
-//        }else{
-//            NSLog(@"头像路径存入成功");
-//        }
-//    }
-//    
-//    NSDictionary * newdict = [self.userDefauls objectForKey:@"usermessage"];
-//    
-//    NSLog(@"22%@",newdict[@"iconPath"]);
-//    
-//    
-//   BOOL write = [iconData writeToFile:iconPaths atomically:YES];
-//    
-//    if (write == YES) {
-//        NSLog(@"=====写入成功====");
-//    }else{
-//    
-//        NSLog(@"=====写入失败====");
-//    }
-//    
-//    
-//    
-//}
-//
-//#pragma mark- 读取沙盒头像图片
-//- (UIImage *)getCustomerIcon{
-//    
-//    
-//    NSDictionary * dict = [self.userDefauls objectForKey:@"usermessage"];
-//    
-//    NSString * iconPaths = dict[@"iconPath"];
-//    
-//    NSLog(@"33%@",iconPaths);
-//    
-//    
-////    iconPaths =  [self.CDManger checkDataWithIconPath];
-//
-//    NSData * customerIcon = [NSData dataWithContentsOfFile:iconPaths];
-//    
-//    NSLog(@"44%@",iconPaths);
-//    
-//    
-//    UIImage * img = [UIImage imageWithData:customerIcon];
-//    
-//    if(img == nil){
-//    
-////        NSLog(@"图片文件读取失败");
-////        
-////        NSMutableDictionary * mudic = [NSMutableDictionary dictionaryWithDictionary:dict];
-////        
-////        mudic[@"iconPath"] = nil;
-////        
-////        NSDictionary * newDic = [NSDictionary dictionaryWithDictionary:mudic];
-////        
-////        [self.userDefauls setObject:newDic forKey:@"usermessage"];
-//        
-//        
-//        
-//        
-//        
-//        img = [UIImage imageNamed:@"icon_1.png"];
-//    }else{
-//    
-//        NSLog(@"文件读取成功");
-//    }
-//    
-//    return img;
-//}
-
-
-
 #pragma mark- buttonAction
 - (void)buttonAction:(UIButton *)button{
     
@@ -1660,7 +1562,7 @@
         
         if([isLogIn isEqualToString:@"1"]){
             
-            /*旧代码
+            /*旧
             self.hidesBottomBarWhenPushed = YES;
             
             [self.navigationController pushViewController:homeNext animated:YES];
@@ -1669,8 +1571,7 @@
             */
 
             
-            //新代码
-            
+            //新
             
             if (self.hidenReview == YES) {
             
@@ -1935,6 +1836,7 @@
             
                 UIButton * button1 = [UIButton buttonWithType:UIButtonTypeCustom];
                 button1.frame = CGRectMake(0, 0, SCREEN_W, SCREEN_W/4);
+                button1.tag = 5500;
                 [self.advimg1 addSubview:button1];
                 [button1 addTarget:self action:@selector(advViewAction:) forControlEvents:UIControlEventTouchUpInside];
             }
@@ -1943,6 +1845,15 @@
             imageV.userInteractionEnabled = YES;
             [self.advView addSubview:imageV];
             [imageV sd_setImageWithURL:[NSURL URLWithString:model.adthumb] placeholderImage:[UIImage imageNamed:@"load.png"]];
+        
+            
+            UIButton * button2 = [UIButton buttonWithType:UIButtonTypeCustom];
+            button2.frame = CGRectMake(0, 0, SCREEN_W, SCREEN_W/4);
+            button2.tag = 5501;
+            [imageV addSubview:button2];
+            [button2 addTarget:self action:@selector(advViewAction:) forControlEvents:UIControlEventTouchUpInside];
+
+        
         }
         
     }
@@ -1954,6 +1865,12 @@
     }else{
         [self.pageControl removeFromSuperview];
     }
+    
+    
+#pragma mark- 添加横幅定时器
+    
+    [self addadvTimer];
+    
 }
 
 
@@ -1972,8 +1889,32 @@
 
 - (void)advViewAction:(UIButton *)bt{
     NSLog(@"广告");
-    self.tabBarController.selectedIndex = 3;
+    //self.tabBarController.selectedIndex = 3;
 
+    if (bt.tag == 5500) {
+        
+        AddArticleController * vc = [[AddArticleController alloc]init];
+        
+        self.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:vc animated:YES];
+        self.hidesBottomBarWhenPushed = NO;
+
+        
+        
+    }else if (bt.tag == 5501){
+    
+        TaoBaoDiscountController * vc = [[TaoBaoDiscountController alloc]init];
+        
+        self.hidesBottomBarWhenPushed = YES;
+        
+        [self.navigationController pushViewController:vc animated:YES];
+        self.hidesBottomBarWhenPushed = NO;
+    }
+    
+    
+    [self stopAdvTimer];
+    
 }
 
 #pragma mark- 任务按钮
@@ -1996,22 +1937,85 @@
     
     [self.tableHeadView addSubview:_missionTaskButton];
 
-//
-//    self.peopleNewComeTaskButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//    self.peopleNewComeTaskButton.frame = CGRectMake(0, SCREEN_H/4 + 30, SCREEN_W, 20);
-//    [self.peopleNewComeTaskButton setTitle:@"新手任务" forState:UIControlStateNormal];
-//    self.peopleNewComeTaskButton.backgroundColor = [UIColor yellowColor];
-//    [self.peopleNewComeTaskButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-//    self.peopleNewComeTaskButton.titleLabel.font = [UIFont systemFontOfSize:13];
-//    self.peopleNewComeTaskButton.tag = 1222;
-//    [self.peopleNewComeTaskButton addTarget:self action:@selector(taskButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-
     
     self.currentMissionTag = 6600;
     self.lastMissionTag = 0;
     [self addTimer];
     
 }
+
+
+
+//广告定时器
+- (void)addadvTimer{
+    
+    
+    if(self.advTimer == nil){
+        
+        self.advTimer= [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(changeAdvPage) userInfo:nil repeats:YES];
+        
+        [[NSRunLoop mainRunLoop]addTimer:self.advTimer forMode:NSRunLoopCommonModes];
+        
+    }
+}
+
+
+
+- (void)stopAdvTimer{
+
+    [self.advTimer invalidate];
+    
+    self.advTimer = nil;
+
+}
+
+
+
+#pragma mark- 改变横幅位置
+- (void)changeAdvPage{
+
+    if (self.flashArray.count > 0) {
+        
+    
+        NSInteger pageNum = self.flashArray.count;
+    
+    
+        if (self.pageControl.currentPage +1 != pageNum && self.left) {
+        
+            
+            self.pageControl.currentPage ++;
+
+            [self.advView setContentOffset:CGPointMake(SCREEN_W * self.pageControl.currentPage, 0) animated:YES];
+            
+        
+        }else{
+        
+        
+            self.left = NO;
+            
+
+            
+        }
+        
+        
+        if (self.pageControl.currentPage != 0 && self.left == NO) {
+        
+            self.pageControl.currentPage --;
+
+            [self.advView setContentOffset:CGPointMake(SCREEN_W * self.pageControl.currentPage, 0) animated:YES];
+            
+        
+        }else{
+        
+            self.left = YES;
+
+        }
+
+    }
+}
+
+
+
 
 
 //定时器
@@ -2072,36 +2076,7 @@
     [array addObject:share];           //分享
     [array addObject:new_member_task]; //新手任务
     
-    
-//    
-//    if ([share_article isEqualToString:@"0"]) {
-//        
-//        tag1 = 6600;//分享文章
-//    }
-//    
-//    if ([invite isEqualToString:@"0"]) {
-//        
-//        tag2 = 6601;//邀请好友
-//    }
-//    
-//    if ([read isEqualToString:@"0"]) {
-//        
-//        tag3 = 6602;//阅读赚
-//    }
-//
-//    if ([share isEqualToString:@"0"]) {
-//        
-//        tag4 = 6603;//分享赚
-//    }
-//
-//    if ([new_member_task isEqualToString:@"0"]) {
-//        
-//        tag5 = 6604;//新手任务
-//    }
 
-   
-    
-    
     while (![array[self.currentMissionTag -  6600] isEqualToString:@"0"]) {
         
         self.currentMissionTag++;
@@ -2146,11 +2121,11 @@
     
     if (self.flashArray.count > 1) {
         
-        NSInteger pageNum = self.flashArray.count;
+    
         
+        /*
         static BOOL right = YES;
         static BOOL left = NO;
-        
         
         if (self.pageControl.currentPage + 1 == pageNum && right == YES) {
             left = YES;
@@ -2174,7 +2149,7 @@
             self.pageControl.currentPage = (self.advView.contentOffset.x - SCREEN_W)/SCREEN_W;
 
         }
-        
+        */
         
     }
     
@@ -2326,72 +2301,7 @@
             title.text = @"超级折扣";
         }
 
-        
-        
     }
-    
-//
-//    _buttonView4 = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_buttonView1.frame) + 1, SCREEN_W, SCREEN_W/8)];
-//    _buttonView4.backgroundColor = [UIColor whiteColor];
-//    [self.tableHeadView addSubview:_buttonView4];
-//
-//    UIImageView * imageView4 = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 35, 35)];
-//    imageView4.center = CGPointMake(25, _buttonView4.bounds.size.height/2);
-//    imageView4.image = [UIImage imageNamed:@"task_share.png"];
-//    [_buttonView4 addSubview:imageView4];
-//    
-//    UILabel * buttonView4Lable1 = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imageView4.frame)+5, 5, 60, 20)];
-//    buttonView4Lable1.text = @"转发赚";
-//    buttonView4Lable1.font = [UIFont systemFontOfSize:15];
-//    
-//    [_buttonView4 addSubview:buttonView4Lable1];
-//    UILabel * buttonView4Lable2 = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imageView4.frame)+5, CGRectGetMaxY(buttonView4Lable1.frame), 200, 20)];
-//    buttonView4Lable2.text = @"分享即可获得收益";
-//    buttonView4Lable2.font = [UIFont systemFontOfSize:11];
-//    [_buttonView4 addSubview:buttonView4Lable2];
-//
-//    
-//    _buttonView2 = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_buttonView4.frame) + 6, SCREEN_W, SCREEN_W/8)];
-//    _buttonView2.backgroundColor = [UIColor whiteColor];
-//    [self.tableHeadView addSubview:_buttonView2];
-//    
-//    UIImageView * imageView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 35, 35)];
-//    imageView.center = CGPointMake(25, _buttonView2.bounds.size.height/2);
-//    imageView.image = [UIImage imageNamed:@"task_red.png"];
-//    [_buttonView2 addSubview:imageView];
-//    
-//    UILabel * buttonView2Lable1 = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imageView.frame)+5, 5, 60, 20)];
-//    buttonView2Lable1.text = @"抢红包";
-//    buttonView2Lable1.font = [UIFont systemFontOfSize:15];
-//
-//    [_buttonView2 addSubview:buttonView2Lable1];
-//    UILabel * buttonView2Lable2 = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(imageView.frame)+5, CGRectGetMaxY(buttonView2Lable1.frame), 200, 20)];
-//    buttonView2Lable2.text = @"每天准点抢红包";
-//    buttonView2Lable2.font = [UIFont systemFontOfSize:11];
-//    [_buttonView2 addSubview:buttonView2Lable2];
-//    
-//    _buttonView3 = [[UIView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(_buttonView2.frame) + 6, SCREEN_W, SCREEN_W/8)];
-//    _buttonView3.backgroundColor = [UIColor whiteColor];
-//    [self.tableHeadView addSubview:_buttonView3];
-//    
-//    UILabel * buttonView3Lable1 = [[UILabel alloc]initWithFrame:CGRectMake(5, 10, 100, 20)];
-//    buttonView3Lable1.text = @"高收益文章";
-//    buttonView3Lable1.font = [UIFont systemFontOfSize:15];
-//    
-//    [_buttonView3 addSubview:buttonView3Lable1];
-//    UILabel * buttonView3Lable2 = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(buttonView3Lable1.frame)+5, 10, 200, 20)];
-//    buttonView3Lable2.text = @"分享后的文章被你朋友阅读+0.05元";
-//    buttonView3Lable2.font = [UIFont systemFontOfSize:11];
-//    [_buttonView3 addSubview:buttonView3Lable2];
-    //=====================================================
-    
-    
-//    }
-
-
-
-//===============
-
 
 }
 //================
@@ -2464,22 +2374,6 @@
 
 }
 
-
-
-#pragma mark- collectionView
-//- (void)collectionViewCreat{
-//
-//    UICollectionViewFlowLayout * flowLayout = [[UICollectionViewFlowLayout alloc]init];
-//    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
-//    UICollectionView * collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_W, SCREEN_H-11)];
-//    collectionView.collectionViewLayout = flowLayout;
-//    
-//    collectionView.delegate = self;
-//    collectionView.dataSource = self;
-//    
-//    [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"collectionCell"];
-//    
-//}
 
 #pragma mark- 下拉刷新
 - (void)MJrefreshData{
@@ -3187,6 +3081,16 @@
         
         self.pageControl.currentPage = scrollView.contentOffset.x/SCREEN_W;
         
+        if (self.pageControl.currentPage  + 1== self.flashArray.count) {
+            
+            self.left = NO;
+        }
+        
+        
+        if (self.pageControl.currentPage  == 0) {
+            
+            self.left = YES;
+        }
         
     }
     
@@ -3194,7 +3098,23 @@
 }
 
 
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
 
+    if (scrollView.tag == 3003) {
+        
+        [self stopAdvTimer];
+    }
+}
+
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+
+    
+    if (scrollView.tag == 3003) {
+    
+        [self addadvTimer];
+    }
+}
 
 
 #pragma mark- 展示公告
@@ -3241,13 +3161,7 @@
     
     [BGview addSubview:imageV];
     
-    //    UIView * line = [[UIView alloc]initWithFrame:CGRectMake(ScreenWith/2, CGRectGetMaxY(imageV.frame), 1, ScreenWith/3)];
-    //    line.backgroundColor = [UIColor whiteColor];
-    //    [BGview addSubview:line];
-    
-//    UIButton * xx = [self addRootButtonNewFram:CGRectMake(SCREEN_W/2 - SCREEN_W/10, CGRectGetMaxY(imageV.frame)+5, SCREEN_W/6, SCREEN_W/6) andSel:@selector(dissmissActivityNoticeShow) andTitle:@"X"];
-    
-    
+ 
     UIButton * xx  = [UIButton buttonWithType:UIButtonTypeCustom];
     xx.frame = CGRectMake(SCREEN_W/2 - SCREEN_W/10, CGRectGetMaxY(imageV.frame)+5, SCREEN_W/6, SCREEN_W/6);
     [xx addTarget:self action:@selector(dissmissActivityNoticeShow) forControlEvents:UIControlEventTouchUpInside];

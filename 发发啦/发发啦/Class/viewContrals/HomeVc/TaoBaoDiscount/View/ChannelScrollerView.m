@@ -8,6 +8,9 @@
 
 #import "ChannelScrollerView.h"
 #import "TaoBaoDiscountClassifyModel.h"
+#import "MBProgressHUD.h"
+
+
 #define bt_with ScreenWith/6
 #define bt_heigh 44
 
@@ -15,7 +18,7 @@
 
 @property(nonatomic,strong)NetWork * net;
 
-
+@property(nonatomic,strong)UIActivityIndicatorView * indicatorView;
 @end
 
 @implementation ChannelScrollerView
@@ -161,11 +164,33 @@
 }
 
 
+- (UIActivityIndicatorView *)indicatorView{
+    
+    
+    if (!_indicatorView) {
+        
+        _indicatorView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        _indicatorView.backgroundColor = [UIColor clearColor];
+        _indicatorView.center = CGPointMake(self.bounds.size.width/2, 20);
+        _indicatorView.color = [UIColor orangeColor];
+        _indicatorView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+        [self addSubview:_indicatorView];
+    }
+    
+    
+    return _indicatorView;
+}
+
+
 - (void)getChannelClassify{
 
+    [self.indicatorView startAnimating];
+    
     [self.net getTaoBaoDiscountChannelClassify];
     WEAK_SELF;
     self.net.taoBaoDiscountChannelClassifyBK = ^(NSString * code, NSString *message, NSString *str, NSArray * dataArr, NSArray *arr) {
+        
+        [weakSelf.indicatorView stopAnimating];
         
         weakSelf.channelClassifyArray = dataArr;
         
