@@ -486,6 +486,7 @@
 		A9E4AC8F1DC6E0CB00395775 /* icon_03@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E4AC8D1DC6E0CB00395775 /* icon_03@3x.png */; };
 		A9E4AC921DC74D7300395775 /* saoma@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E4AC901DC74D7300395775 /* saoma@2x.png */; };
 		A9E4AC931DC74D7300395775 /* saoma@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9E4AC911DC74D7300395775 /* saoma@3x.png */; };
+		A9E70B591F417F4C0096C5B4 /* FunctionIntroduceView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E70B581F417F4C0096C5B4 /* FunctionIntroduceView.m */; };
 		A9E8BF081DD9456900571346 /* memberModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E8BF071DD9456900571346 /* memberModel.m */; };
 		A9E8BF0B1DD95F5D00571346 /* BinDingWeChatVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A9E8BF0A1DD95F5D00571346 /* BinDingWeChatVC.m */; };
 		A9EECE3B1DE5851000DC5635 /* invite_NextVc.m in Sources */ = {isa = PBXBuildFile; fileRef = A9EECE3A1DE5851000DC5635 /* invite_NextVc.m */; };
@@ -1194,6 +1195,8 @@
 		A9E4AC8D1DC6E0CB00395775 /* icon_03@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_03@3x.png"; sourceTree = "<group>"; };
 		A9E4AC901DC74D7300395775 /* saoma@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "saoma@2x.png"; sourceTree = "<group>"; };
 		A9E4AC911DC74D7300395775 /* saoma@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "saoma@3x.png"; sourceTree = "<group>"; };
+		A9E70B571F417F4C0096C5B4 /* FunctionIntroduceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunctionIntroduceView.h; sourceTree = "<group>"; };
+		A9E70B581F417F4C0096C5B4 /* FunctionIntroduceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunctionIntroduceView.m; sourceTree = "<group>"; };
 		A9E8BF061DD9456900571346 /* memberModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = memberModel.h; sourceTree = "<group>"; };
 		A9E8BF071DD9456900571346 /* memberModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = memberModel.m; sourceTree = "<group>"; };
 		A9E8BF091DD95F5D00571346 /* BinDingWeChatVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinDingWeChatVC.h; sourceTree = "<group>"; };
@@ -2171,6 +2174,7 @@
 		A99E1B541D64086C005C9C2A /* UIview */ = {
 			isa = PBXGroup;
 			children = (
+				A9E70B561F417EBC0096C5B4 /* MaskView */,
 				A9AF19811D659CB4006FBAAD /* Cell */,
 				A99E1B551D640892005C9C2A /* SignInRedView.h */,
 				A99E1B561D640892005C9C2A /* SignInRedView.m */,
@@ -2553,6 +2557,15 @@
 				A9E202521D879F2C00376881 /* oneTypeCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		A9E70B561F417EBC0096C5B4 /* MaskView */ = {
+			isa = PBXGroup;
+			children = (
+				A9E70B571F417F4C0096C5B4 /* FunctionIntroduceView.h */,
+				A9E70B581F417F4C0096C5B4 /* FunctionIntroduceView.m */,
+			);
+			path = MaskView;
 			sourceTree = "<group>";
 		};
 		A9EECE381DE584DA00DC5635 /* InviteVc */ = {
@@ -2941,6 +2954,7 @@
 				A953315A1DCAE66700A561C3 /* inviteProFitModel.m in Sources */,
 				A9A7EFCF1DB461EF00A88E10 /* UIView+WebCacheOperation.m in Sources */,
 				A9AFBDFF1DD00B6E00964A86 /* UMSocialShareSelectionView.m in Sources */,
+				A9E70B591F417F4C0096C5B4 /* FunctionIntroduceView.m in Sources */,
 				A9AFBDFD1DD00B6E00964A86 /* UMSocialCollectionCell.m in Sources */,
 				A98403BD1D6183AF0078C52B /* ViewController.m in Sources */,
 				A95331991DCB514B00A561C3 /* MJRefreshNormalHeader.m in Sources */,

@@ -32,6 +32,7 @@
 #import "wkWebViewController.h"
 #import "WeiXinAndAliPayWithDrawVC.h"
 #import <UMMobClick/MobClick.h>
+#import "FunctionIntroduceView.h"
 
 #define SCREEN_H [UIScreen mainScreen].bounds.size.height
 #define SCREEN_W [UIScreen mainScreen].bounds.size.width
@@ -207,6 +208,13 @@
         self.headScrollView.contentOffset = CGPointMake(0, 0);
     }
   
+
+    
+#pragma mark- 新功能介绍页;
+    
+    FunctionIntroduceView * viewNewFunction = [[FunctionIntroduceView alloc]initWithFrame:self.view.bounds];
+    
+    [self.view addSubview:viewNewFunction];
     
     
 }
@@ -1049,7 +1057,6 @@
         }else{
         
             NSLog(@"no");
-
             
             NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithDictionary:[[NSUserDefaults standardUserDefaults] objectForKey:@"usermessage"]];
             dict[@"isShowNewUserGift"] = [NSString stringWithFormat:@"1"];
