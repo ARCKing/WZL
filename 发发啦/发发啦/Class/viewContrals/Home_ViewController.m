@@ -208,14 +208,6 @@
         self.headScrollView.contentOffset = CGPointMake(0, 0);
     }
   
-
-    
-#pragma mark- 新功能介绍页;
-    
-    FunctionIntroduceView * viewNewFunction = [[FunctionIntroduceView alloc]initWithFrame:self.view.bounds];
-    
-    [self.view addSubview:viewNewFunction];
-    
     
 }
 
@@ -414,6 +406,24 @@
 
     
     self.left = YES;
+    
+    
+    
+    
+    
+#pragma mark- [[[[[[新功能介绍页]]]]];
+    
+    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+    NSDictionary * dic = [userDefaults objectForKey:@"usermessage"];
+    
+    NSString * funcNew = dic[@"funcNew"];
+    
+    if (![funcNew isEqualToString:@"1"]) {
+        FunctionIntroduceView * viewNewFunction = [[FunctionIntroduceView alloc]initWithFrame:self.view.bounds];
+        [self.view addSubview:viewNewFunction];
+    }
+
+    
     
 }
 

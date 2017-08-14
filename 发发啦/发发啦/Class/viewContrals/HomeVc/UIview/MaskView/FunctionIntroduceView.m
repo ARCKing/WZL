@@ -87,7 +87,20 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
 
+    
+    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary * dic = [NSMutableDictionary dictionaryWithDictionary:[userDefaults objectForKey:@"usermessage"]];
+    
+    dic[@"funcNew"] = @"1";
 
+    NSDictionary * dict = [NSDictionary dictionaryWithDictionary:dic];
+    
+    [userDefaults setObject:dict forKey:@"usermessage"];
+
+    BOOL successed = [userDefaults synchronize];
+
+    NSLog(@"succeed:%d",successed);
+    
     [self removeFromSuperview];
 }
 
