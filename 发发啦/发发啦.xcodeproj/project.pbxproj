@@ -2620,7 +2620,7 @@
 					A98403B11D6183AF0078C52B = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = LY9Q54F6JE;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -3255,7 +3255,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "发发啦/发发啦.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Guangxi City Network Technology Co., Ltd. (939XX592SN)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Guangxi City Network Technology Co., Ltd.";
 				DEVELOPMENT_TEAM = LY9Q54F6JE;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3293,8 +3293,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gx.wzl.enterprise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "8f226c10-9761-45f1-a1dd-a1e7616f3a6c";
+				PROVISIONING_PROFILE_SPECIFIER = wzlEnterDisProfile;
 			};
 			name = Debug;
 		};
@@ -3304,7 +3304,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "发发啦/发发啦.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Guangxi City Network Technology Co., Ltd. (939XX592SN)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Guangxi City Network Technology Co., Ltd.";
 				DEVELOPMENT_TEAM = LY9Q54F6JE;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -3342,8 +3342,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.gx.wzl.enterprise;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "8f226c10-9761-45f1-a1dd-a1e7616f3a6c";
+				PROVISIONING_PROFILE_SPECIFIER = wzlEnterDisProfile;
 			};
 			name = Release;
 		};

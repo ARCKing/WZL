@@ -24,6 +24,8 @@
 
 #define UMAppKeyEnterprise @"595f3ec0ae1bf82a7d001143"
 
+//#define UMAppKeyEnterprise @"5992a2ef8f4a9d129800128f"
+
 @interface AppDelegate ()<WXApiDelegate,UNUserNotificationCenterDelegate>
 @property (nonatomic, retain) UIImageView *customSplashView;
 @property (nonatomic, strong) UIButton * closeButton;
@@ -613,9 +615,12 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
     
-    NSLog(@"deviceToken=%@",[[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""]
-                  stringByReplacingOccurrencesOfString: @">" withString: @""]
-                 stringByReplacingOccurrencesOfString: @" " withString: @""]);
+    
+    NSString * divice = [[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""]
+                          stringByReplacingOccurrencesOfString: @">" withString: @""]
+                         stringByReplacingOccurrencesOfString: @" " withString: @""];
+    
+    NSLog(@"deviceToken=%@",divice);
 }
 
 

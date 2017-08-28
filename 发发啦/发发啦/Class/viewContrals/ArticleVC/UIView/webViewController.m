@@ -13,6 +13,7 @@
 #import "userCollectionArticleModel.h"
 #import "LogInViewController.h"
 #import "UIImageView+WebCache.h"
+#import "MBProgressHUD.h"
 
 #pragma mark- 用户资料
 #define UMSUserInfoPlatformTypeKey @"UMSUserInfoPlatformTypeKey"
@@ -73,7 +74,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self getShareImage];
     
     //==========Ushare=========
     self.platformInfoArray = [NSMutableArray arrayWithCapacity:5];
@@ -758,6 +758,7 @@
     [self.net shareTimesRecoard:self.id_];
     
     
+    MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     
     //判断是否安装有UC浏览器
@@ -769,12 +770,13 @@
             
             [self.net getHeightPriceUCshareLinkWithArticleID:self.id_ andShareType:@"wechat_moments"];
             
-            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare) {
+            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare,NSString * thumb,NSString * title) {
                 
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"ucbrowser://%@",ucShare]]];
                 
                 NSLog(@"%@",ucShare);
                 
+                [hud hideAnimated:YES];
             };
             
             
@@ -782,10 +784,12 @@
             //微信好友
             
             [self.net getHeightPriceUCshareLinkWithArticleID:self.id_ andShareType:@"wechat_friend"];
-            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare) {
+            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare,NSString * thumb,NSString * title) {
                 
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"ucbrowser://%@",ucShare]]];
                 
+                [hud hideAnimated:YES];
+
             };
            
             
@@ -793,10 +797,12 @@
             //QQ
             
             [self.net getHeightPriceUCshareLinkWithArticleID:self.id_ andShareType:@"qq_mobile"];
-            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare) {
+            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare,NSString * thumb,NSString * title) {
                 
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"ucbrowser://%@",ucShare]]];
                 
+                [hud hideAnimated:YES];
+
             };
             
             
@@ -804,10 +810,12 @@
             //QZone
             
             [self.net getHeightPriceUCshareLinkWithArticleID:self.id_ andShareType:@"qq_zone"];
-            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare) {
+            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare,NSString * thumb,NSString * title) {
                 
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"ucbrowser://%@",ucShare]]];
                 
+                [hud hideAnimated:YES];
+
             };
             
             
@@ -825,10 +833,12 @@
             
             [self.net getHeightPriceUCshareLinkWithArticleID:self.id_ andShareType:@"wechat_moments"];
             
-            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare) {
+            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare,NSString * thumb,NSString * title) {
                 
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"mttbrowser://url=%@",ucShare]]];
                 NSLog(@"%@",ucShare);
+
+                [hud hideAnimated:YES];
 
             };
             
@@ -837,10 +847,12 @@
             //微信好友
             
             [self.net getHeightPriceUCshareLinkWithArticleID:self.id_ andShareType:@"wechat_friend"];
-            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare) {
+            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare,NSString * thumb,NSString * title) {
                 
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"mttbrowser://url=%@",ucShare]]];
                 NSLog(@"%@",ucShare);
+
+                [hud hideAnimated:YES];
 
             };
             
@@ -848,10 +860,12 @@
             //QQ
             
             [self.net getHeightPriceUCshareLinkWithArticleID:self.id_ andShareType:@"qq_mobile"];
-            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare) {
+            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare,NSString * thumb,NSString * title) {
                 
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"mttbrowser://url=%@",ucShare]]];
                 
+                [hud hideAnimated:YES];
+
             };
             
             
@@ -859,10 +873,12 @@
             //QZone
             
             [self.net getHeightPriceUCshareLinkWithArticleID:self.id_ andShareType:@"qq_zone"];
-            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare) {
+            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare,NSString * thumb,NSString * title) {
                 
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"mttbrowser://url=%@",ucShare]]];
                 
+                [hud hideAnimated:YES];
+
             };
             
             
@@ -877,10 +893,12 @@
             
             [self.net getHeightPriceUCshareLinkWithArticleID:self.id_ andShareType:@"wechat_moments"];
             
-            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare) {
+            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare,NSString * thumb,NSString * title) {
                 
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"mqqbrowser://url=%@",ucShare]]];
-                
+              
+                [hud hideAnimated:YES];
+
             };
             
             
@@ -888,20 +906,24 @@
             //微信好友
             
             [self.net getHeightPriceUCshareLinkWithArticleID:self.id_ andShareType:@"wechat_friend"];
-            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare) {
+            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare,NSString * thumb,NSString * title) {
                 
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"mqqbrowser://url=%@",ucShare]]];
-                
+
+                [hud hideAnimated:YES];
+
             };
             
         }else if (bt.tag == 1112 ){
             //QQ
             
             [self.net getHeightPriceUCshareLinkWithArticleID:self.id_ andShareType:@"qq_mobile"];
-            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare) {
+            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare,NSString * thumb,NSString * title) {
                 
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"mqqbrowser://url=%@",ucShare]]];
                 
+                [hud hideAnimated:YES];
+
             };
             
             
@@ -909,10 +931,12 @@
             //QZone
             
             [self.net getHeightPriceUCshareLinkWithArticleID:self.id_ andShareType:@"qq_zone"];
-            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare) {
+            self.net.heightPriceUCshareLinkBK = ^(NSString * ucShare,NSString * thumb,NSString * title) {
                 
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"mqqbrowser://url=%@",ucShare]]];
                 
+                [hud hideAnimated:YES];
+
             };
             
             
@@ -927,10 +951,12 @@
         
         __weak webViewController * weakSelf = self;
         
-        self.net.lociationLinkBK = ^(NSString * shareLink) {
+        self.net.lociationLinkBK = ^(NSString * shareLink,NSString * thumb,NSString * title) {
             
-            [weakSelf locationShareActionWithURL:[NSString stringWithFormat:@"%@",shareLink]];
+            [hud hideAnimated:YES];
 
+            [weakSelf getShareImageWithThumb:thumb andHUD:nil andShareLink:shareLink];
+            
         };
         
     }
@@ -1168,6 +1194,8 @@
      
     [_progressView setProgress:progress animated:YES];
     self.titLabel.text = [_web stringByEvaluatingJavaScriptFromString:@"document.title"];
+    
+    self.bigTitle = self.titLabel.text;
 }
 
 #pragma mark- 分享栏
@@ -1332,8 +1360,10 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
 
+    NSLog(@"shouldStartLoadWithRequest-URL=>>>>>%@",webView.request.URL.absoluteString);
 
-
+    [self getArticleIdWithArticleURL:webView.request.URL.absoluteString];
+    
     return YES;
 }
 
@@ -1343,6 +1373,7 @@
 
     NSLog(@"网页开始加载");
     
+    NSLog(@"webViewDidStartLoad-URL=>>>>>%@",webView.request.URL.absoluteString);
 
 
 }
@@ -1350,6 +1381,9 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     
     NSLog(@"网页加载完成");
+    NSLog(@"webViewDidFinishLoad-URL=>>>>>%@",webView.request.URL.absoluteString);
+
+    [self getArticleIdWithArticleURL:webView.request.URL.absoluteString];
     
     
     if (webView.canGoBack) {
@@ -1817,7 +1851,7 @@
 
 
 /**获取分享缩略图*/
-- (void)getShareImage{
+- (void)getShareImageWithThumb:(NSString *)thumb andHUD:(MBProgressHUD *)hud andShareLink:(NSString *)shareLink{
     
 
     SDWebImageManager * manger = [SDWebImageManager sharedManager];
@@ -1829,9 +1863,39 @@
         
         weakSelf.locationShareImage = image;
     
+        [weakSelf locationShareActionWithURL:[NSString stringWithFormat:@"%@",shareLink]];
+
     }];
     
 }
 
+#pragma mark- 获取文章ID
+- (void)getArticleIdWithArticleURL:(NSString *)url{
+    
+    NSArray * arr = [url componentsSeparatedByString:@"/"];
+    
+    NSLog(@"%@",arr);
+    
+    if (arr.count > 0) {
+        
+        
+        for (int i = 0 ; i < arr.count ; i++) {
+            
+            if ([arr[i] isEqualToString:@"id"]) {
+                
+                if (i + 1 != arr.count) {
+                    
+                    self.id_ = arr[i + 1];
+                    
+                    break;
+                }
+            }
+        }
+        
+        NSLog(@"-----current_ID:%@----",self.id_);
+    }
+    
+    
+}
 
 @end

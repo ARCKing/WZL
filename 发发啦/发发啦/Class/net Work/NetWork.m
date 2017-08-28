@@ -2836,13 +2836,19 @@
         
         NSString * code = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
         NSString * dataUrl = @"0";
+        NSString * thumb = nil;
+        NSString * title = nil;
         
         if ([code isEqualToString:@"1"]) {
             
             dataUrl = [NSString stringWithFormat:@"%@",responseObject[@"data"]];
+            
+            thumb = [NSString stringWithFormat:@"%@",responseObject[@"thumb"]];
+            
+            title = [NSString stringWithFormat:@"%@",responseObject[@"title"]];
         }
         
-        self.heightPriceUCshareLinkBK(dataUrl);
+        self.heightPriceUCshareLinkBK(dataUrl,thumb,title);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
@@ -2878,13 +2884,19 @@
         
         NSString * code = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
         NSString * dataUrl = @"0";
-        
+        NSString * thumb = nil;
+        NSString * title = nil;
+
         if ([code isEqualToString:@"1"]) {
             
             dataUrl = [NSString stringWithFormat:@"%@",responseObject[@"data"]];
+            
+            thumb = [NSString stringWithFormat:@"%@",responseObject[@"thumb"]];
+            
+            title = [NSString stringWithFormat:@"%@",responseObject[@"title"]];
         }
         
-        self.lociationLinkBK(dataUrl);
+        self.lociationLinkBK(dataUrl,thumb,title);
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         

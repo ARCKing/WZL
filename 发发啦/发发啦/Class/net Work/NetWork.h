@@ -77,7 +77,9 @@ typedef void(^userInfoChangeMessagesBlock) (NSString *);
 
 typedef void(^readEarnFinishBlock) (NSString *);
 
-typedef void(^heightPriceUCShareLinkBlock) (NSString *);
+typedef void(^heightPriceUCShareLinkBlock) (NSString *,NSString*,NSString *);
+
+
 
 typedef void(^isHiddenWhenReViewBlock) (NSString *,BOOL);
 
